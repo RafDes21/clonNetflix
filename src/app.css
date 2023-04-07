@@ -1,0 +1,23 @@
+:root {
+  --background: #333;
+  --primary: #f7f7f7;
+  --secondary: #999;
+  --text-primary:#e50914;
+  --black:#000;
+  --black-transparent:#000000bb;
+}
+* {
+  margin: 0;
+  padding: 0;
+}
+.app {
+  padding: 0 80px;
+  background-color: var(--background);
+}
+@media only screen and (max-width:768px) {
+  .app{
+    padding: 0 ;
+  }
+}
+
+
