@@ -1,0 +1,16 @@
+.containerHeader {
+  position: absolute;
+  width: 100%;
+  left: 0;
+}
+
+.containerHeader img{
+  width: 100%;
+}
+
+
+.descriptionHeader {
+  position: absolute;
+  top: 0;
+  left: 0;
+}

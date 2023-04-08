@@ -6,6 +6,7 @@ interface movieState {
   children: string[];
   comedies: string[];
   top: string[];
+  movieRender:{}
 }
 
 const initialState: movieState = {
@@ -14,6 +15,7 @@ const initialState: movieState = {
   children: [],
   comedies: [],
   top: [],
+  movieRender:{}
 };
 
 const movieBrowseSlice = createSlice({
@@ -36,9 +38,12 @@ const movieBrowseSlice = createSlice({
     setTops: (state, actions) => {
       state.top = actions.payload;
     },
+    setMovieRender: (state, action) => {
+      state.movieRender = action.payload
+    }
   },
 });
 
-export const { setPopular, setTheatres, setChildren, setComedies, setTops } =
+export const { setPopular, setTheatres, setChildren, setComedies, setTops, setMovieRender } =
   movieBrowseSlice.actions;
 export default movieBrowseSlice.reducer;

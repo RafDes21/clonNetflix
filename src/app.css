@@ -13,6 +13,7 @@
 .app {
   padding: 0 80px;
   background-color: var(--background);
+  position: relative;
 }
 @media only screen and (max-width:768px) {
   .app{

@@ -5,6 +5,7 @@ import {
   setChildren,
   setComedies,
   setTops,
+  setMovieRender,
 } from "../slices/moviesBrowsSlice";
 
 interface Movie {
@@ -33,6 +34,23 @@ export const getPopular = () => {
     });
 
     dispatch(setPopular(res.results));
+  };
+};
+
+export const getMovieRandom = () => {
+  return async (dispatch: Dispatch<PopularLoadedAction>) => {
+    const random_number = Math.floor(Math.random() * 20) + 1;
+    const api =
+      "https://api.themoviedb.org/3/discover/movie?api_key=e7e16089afd28414ef3120b577232770&sort_by=popularity.desc";
+
+    const res = await fetch(api).then((response) => {
+      if (!response.ok) {
+        throw new Error("error");
+      }
+      return response.json();
+    });
+
+    dispatch(setMovieRender(res.results[random_number]));
   };
 };
 // theatres
