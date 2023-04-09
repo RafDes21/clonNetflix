@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../../store/hook/hook";
 import {
   getChildren,
@@ -8,15 +8,19 @@ import {
   getTop,
   getMovieRandom,
 } from "../../store/thunks/moviesBrowseThunk";
-import { Header } from "../../components";
-import styles from "./styles.module.css"
+import { ContainSlider, Header } from "../../components";
+import styles from "./styles.module.css";
 
 const Home = () => {
   const dispatch = useAppDispatch();
 
-  const movies = useAppSelector((state) => state.movieBrowse.popular);
+  const moviesPopular: any = useAppSelector((state) => state.movieBrowse.popular);
+  const moviesTheatres: any = useAppSelector((state) => state.movieBrowse.theatres);
+  const moviesChildren: any = useAppSelector((state) => state.movieBrowse.children);
+  const moviesComedy: any = useAppSelector((state) => state.movieBrowse.comedies);
+  const moviesTops: any = useAppSelector((state) => state.movieBrowse.top);
+
   const movie: any = useAppSelector((state) => state.movieBrowse.movieRender);
-  console.log(movies);
 
   useEffect(() => {
     dispatch(getPopular());
@@ -35,8 +39,11 @@ const Home = () => {
         description={movie.overview}
       />
       <div className={styles.contentMain}>
-        <h1>home</h1>
-        <h1>{movie.title}</h1>
+        <ContainSlider title="Popular" arrayList={moviesPopular} />
+        <ContainSlider title="Theatres" arrayList={moviesTheatres} />
+        <ContainSlider title="Children" arrayList={moviesChildren} />
+        <ContainSlider title="Comedy" arrayList={moviesComedy} />
+        <ContainSlider title="Tops" arrayList={moviesTops} />
       </div>
     </div>
   );

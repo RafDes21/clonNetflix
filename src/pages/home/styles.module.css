@@ -2,3 +2,89 @@
   position: relative;
   padding-top: 670px;
 }
+
+.listado {
+  background-color: #181818;
+}
+
+.listGroups {
+  margin-top: -110px;
+  z-index: 2;
+  position: relative;
+}
+.section {
+  height: 250px;
+  position: relative;
+}
+.section h3 {
+  padding: 10px 0;
+  color: #fff;
+  font-weight: bold;
+  padding-left: 100px;
+}
+
+.containCards {
+  display: flex;
+  padding-left: 100px;
+}
+.arrowLeft {
+  color: #fff;
+  position: absolute;
+  font-size: 30px;
+  padding: 10px;
+  height: 144px;
+  width: 50px;
+  top: 16%;
+  z-index: 5;
+  background-color: #01010180;
+  cursor: pointer;
+  left: -80px;
+}
+.arrowRight {
+  right: -80px;
+  color: #fff;
+  position: absolute;
+  font-size: 30px;
+  padding: 10px;
+  height: 140px;
+  width: 50px;
+  top: 17%;
+  z-index: 5;
+  background-color: #01010180;
+  cursor: pointer;
+}
+
+@media screen and (max-width:768px) {
+  .listGroups {
+    margin-top: -150px;
+    z-index: 2;
+    position: relative;
+  }
+  .arrowLeft {
+    color: #fff;
+    position: absolute;
+    font-size: 30px;
+    padding: 10px;
+    height: 144px;
+    width: 30px;
+    top: 16%;
+    z-index: 5;
+    background-color: #01010180;
+    cursor: pointer;
+    left:0;
+  }
+  .arrowRight {
+    right: 0;
+    color: #fff;
+    position: absolute;
+    font-size: 30px;
+    padding: 10px;
+    height: 140px;
+    width: 30px;
+    top: 17%;
+    z-index: 5;
+    background-color: #01010180;
+    cursor: pointer;
+  }
+}
+

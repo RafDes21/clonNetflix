@@ -10,8 +10,6 @@ type props = {
 };
 
 const Header: React.FC<props> = ({ image, title, description }) => {
-  console.log("este", image, title);
-
   return (
     <div className={styles.containerHeader}>
       <img src={image} alt={title} />

@@ -1,0 +1,32 @@
+.container {
+  position: relative;
+  margin-bottom: 40px;
+}
+.container h3{
+  color: var(--primary);
+  margin-bottom: 20px;
+  font-size: 25px;
+}
+.containerSlider {
+  display: flex;
+}
+.arrowLeft {
+  position: absolute;
+  color: var(--primary);
+  font-size: 40px;
+  bottom: 4px;
+  height: 140px;
+  background-color: var(--black-transparent);
+  padding: 0 5px;
+  left: -83px;
+}
+.arrowRight {
+  position: absolute;
+  color: var(--primary);
+  font-size: 40px;
+  bottom: 4px;
+  height: 140px;
+  background-color: var(--black-transparent);
+  padding: 0 10px;
+  right: -82px;
+}
