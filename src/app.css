@@ -5,6 +5,7 @@
   --text-primary:#e50914;
   --black:#000;
   --black-transparent:#000000bb;
+  --secondary-transparent: #99999995;
 }
 * {
   margin: 0;

@@ -6,16 +6,17 @@ import {
   getPopular,
   getTheatres,
   getTop,
-  getMovieRandom
+  getMovieRandom,
 } from "../../store/thunks/moviesBrowseThunk";
 import { Header } from "../../components";
+import styles from "./styles.module.css"
 
 const Home = () => {
   const dispatch = useAppDispatch();
 
   const movies = useAppSelector((state) => state.movieBrowse.popular);
-  const movie:any= useAppSelector((state) => state.movieBrowse.movieRender);
-  console.log(movie.backdrop_path);
+  const movie: any = useAppSelector((state) => state.movieBrowse.movieRender);
+  console.log(movies);
 
   useEffect(() => {
     dispatch(getPopular());
@@ -27,11 +28,16 @@ const Home = () => {
   }, [dispatch]);
 
   return (
-    <div>
-      <Header image={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}  title={movie.title} />
-   
-      <h1>home</h1>
-      <h1>{movie.title}</h1>
+    <div className={styles.home}>
+      <Header
+        image={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}
+        title={movie.title}
+        description={movie.overview}
+      />
+      <div className={styles.contentMain}>
+        <h1>home</h1>
+        <h1>{movie.title}</h1>
+      </div>
     </div>
   );
 };
