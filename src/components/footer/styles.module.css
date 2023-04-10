@@ -24,4 +24,13 @@
     transform: scale(1.2);
     transition: all 0.1s;
   }
-  
+  @media only screen and (max-width:991px) {
+    .redes .iconRed {
+      font-size: 25px;
+    }
+  }
+  @media only screen and (max-width:400px) {
+    .redes .iconRed {
+      font-size: 20px;
+    }
+  }

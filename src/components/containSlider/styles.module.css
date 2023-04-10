@@ -35,14 +35,14 @@
     margin-bottom: 15px;
   }
   .arrowLeft {
-    font-size: 20px;
+    font-size: 15px;
     bottom: 4px;
     height: 140px;
     padding: 0 5px;
-    left: -40px;
+    left: -20px;
   }
   .arrowRight {
-    font-size: 20px;
+    font-size: 15px;
     bottom: 4px;
     height: 140px;
     padding: 0 5px;

@@ -76,14 +76,14 @@
 }
 @media (max-width: 991px) {
   .descriptionHeader {
-    left: 60px;
+    left: 20px;
     width: 50%;
   }
   .descriptionHeader h1 {
     font-size: 18px;
   }
   .description p {
-    font-size: 14px;
+    font-size: 12px;
     margin: 10px 0;
     line-height: 1;
   }
