@@ -50,19 +50,19 @@ export const getForIdCategory = (id: number, nameCategory: string) => {
       const API = `https://api.themoviedb.org/3/discover/movie?api_key=${env}&page=3&with_genres=${id}&sort_by=popularity.desc`;
       await fetch(API)
         .then((response) => response.json())
-        .then((data) => dispatch(setAction(data.results)));
+        .then((data) => dispatch(setFamily(data.results)));
     }
     if (nameCategory === "Fantasy") {
       const API = `https://api.themoviedb.org/3/discover/movie?api_key=${env}&page=6&with_genres=${id}&sort_by=popularity.desc`;
       await fetch(API)
         .then((response) => response.json())
-        .then((data) => dispatch(setAction(data.results)));
+        .then((data) => dispatch(setFantasy(data.results)));
     }
     if (nameCategory === "Comedy") {
       const API = `https://api.themoviedb.org/3/discover/movie?api_key=${env}&page=1&with_genres=${id}&sort_by=popularity.desc`;
       await fetch(API)
         .then((response) => response.json())
-        .then((data) => dispatch(setAction(data.results)));
+        .then((data) => dispatch(setComedies(data.results)));
     }
   };
 };

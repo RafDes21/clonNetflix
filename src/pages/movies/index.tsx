@@ -25,6 +25,7 @@ const Movies = () => {
   const moviesComedies: any = useAppSelector((state) => state.movie.comedies);
   const moviesFamily: any = useAppSelector((state) => state.movie.family);
   const movieFantasy: any = useAppSelector((state) => state.movie.fantasy);
+console.log(moviesComedies);
 
   useEffect(() => {
     dispatch(getMoviesCategories());
