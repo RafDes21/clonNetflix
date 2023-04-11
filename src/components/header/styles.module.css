@@ -99,7 +99,7 @@
 }
 @media (max-width: 400px) {
   .descriptionHeader {
-    width: 50%;
+    width: 55%;
     left: 10px;
   }
   .descriptionHeader h1 {
@@ -114,7 +114,7 @@
   }
   .btnDescription button {
     font-size: 7px;
-    padding: 1px 5px;
+    padding: 1px 3px;
     border-radius: 2px;
     gap: 5px;
   }
