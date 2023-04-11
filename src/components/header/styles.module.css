@@ -103,22 +103,22 @@
     left: 10px;
   }
   .descriptionHeader h1 {
-    font-size: 16px;
+    font-size: 12px;
   }
   .description p {
-    font-size: 8px;
+    font-size: 6px;
     margin: 5px 0;
   }
   .btnDescription {
     gap: 2px;
   }
   .btnDescription button {
-    font-size: 7px;
-    padding: 1px 3px;
-    border-radius: 2px;
+    font-size: 5px;
+    padding: 2px 3px;
+    border-radius: 1px;
     gap: 5px;
   }
   .btnIconInfo {
-    font-size: 18px;
+    font-size: 7px;
   }
 }
