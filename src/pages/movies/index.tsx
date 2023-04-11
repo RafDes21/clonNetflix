@@ -3,7 +3,7 @@ import { useAppDispatch, useAppSelector } from "../../store/hook/hook";
 import {
   getForIdCategory,
   getMoviesCategories,
-  getMoviesRandom,
+  getPageMovieRandom,
 } from "../../store/thunks/moviesThunks";
 import { ContainSlider, Header } from "../../components";
 import styles from "./styles.module.css";
@@ -16,8 +16,10 @@ const Movies = () => {
   );
 
   const moviesOneRender: any = useAppSelector(
-    (state) => state.movie.moviesRender
+    (state) => state.movie.moviesPageRender
   );
+  // console.log(moviesOneRender);
+
   const moviesAction: any = useAppSelector((state) => state.movie.action);
   const moviesAdventure: any = useAppSelector((state) => state.movie.adventure);
   const moviesComedies: any = useAppSelector((state) => state.movie.comedies);
@@ -26,7 +28,7 @@ const Movies = () => {
 
   useEffect(() => {
     dispatch(getMoviesCategories());
-    dispatch(getMoviesRandom());
+    dispatch(getPageMovieRandom());
   }, [dispatch]);
 
   useEffect(() => {
@@ -37,18 +39,24 @@ const Movies = () => {
 
   return (
     <div>
-      <Header
-        image={`https://image.tmdb.org/t/p/original${moviesOneRender.backdrop_path}`}
-        title={moviesOneRender.title}
-        description={moviesOneRender.overview}
-      />
-      <div className={styles.contentMain}>
-        <ContainSlider title="Action" arrayList={moviesAction} />
-        <ContainSlider title="Adventure" arrayList={moviesAdventure} />
-        <ContainSlider title="Comedy" arrayList={moviesComedies} />
-        <ContainSlider title="Family" arrayList={moviesFamily} />
-        <ContainSlider title="Fantasy" arrayList={movieFantasy} />
-      </div>
+      {moviesOneRender.backdrop_path ? (
+        <>
+          <Header
+            image={`https://image.tmdb.org/t/p/original${moviesOneRender.backdrop_path}`}
+            title={moviesOneRender.title}
+            description={moviesOneRender.overview}
+          />
+          <div className={styles.contentMain}>
+            <ContainSlider title="Action" arrayList={moviesAction} />
+            <ContainSlider title="Adventure" arrayList={moviesAdventure} />
+            <ContainSlider title="Comedy" arrayList={moviesComedies} />
+            <ContainSlider title="Family" arrayList={moviesFamily} />
+            <ContainSlider title="Fantasy" arrayList={movieFantasy} />
+          </div>
+        </>
+      ) : (
+        <h1 className={styles.loading}>loading</h1>
+      )}
     </div>
   );
 };

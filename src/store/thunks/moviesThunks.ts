@@ -6,7 +6,7 @@ import {
   setFantasy,
   setComedies,
   setCategories,
-  setMovieRender,
+  setPageMovieRender,
 } from "../slices/movieSlice";
 
 interface MoviesLoadedAction {
@@ -55,30 +55,32 @@ export const getForIdCategory = (id: number, nameCategory: string) => {
     if (nameCategory === "Fantasy") {
       const API = `https://api.themoviedb.org/3/discover/movie?api_key=${env}&page=6&with_genres=${id}&sort_by=popularity.desc`;
       await fetch(API)
-      .then((response) => response.json())
-      .then((data) => dispatch(setAction(data.results)));
-  }
+        .then((response) => response.json())
+        .then((data) => dispatch(setAction(data.results)));
+    }
     if (nameCategory === "Comedy") {
       const API = `https://api.themoviedb.org/3/discover/movie?api_key=${env}&page=1&with_genres=${id}&sort_by=popularity.desc`;
       await fetch(API)
-      .then((response) => response.json())
-      .then((data) => dispatch(setAction(data.results)));
-  }
-}};
+        .then((response) => response.json())
+        .then((data) => dispatch(setAction(data.results)));
+    }
+  };
+};
 
-export const getMoviesRandom = () => {
+export const getPageMovieRandom = () => {
   return async (dispatch: Dispatch<MoviesLoadedAction>) => {
-    const random_number = Math.floor(Math.random() * 20) + 1;
+    const random_number = Math.floor(Math.random() * 19) + 1;
     const idRandom = 16;
-    const api = `https://api.themoviedb.org/3/discover/movie?api_key=${env}&page=1&with_genres=${idRandom}&sort_by=popularity.desc`;
-
-    const res = await fetch(api).then((response) => {
-      if (!response.ok) {
-        throw new Error("error");
-      }
-      return response.json();
-    });
-
-    dispatch(setMovieRender(res.results[random_number]));
+    const API = `https://api.themoviedb.org/3/discover/movie?api_key=${env}&page=1&with_genres=${idRandom}&sort_by=popularity.desc`;
+    fetch(API)
+      .then((resolve) => resolve.json())
+      .then((data) => {
+        const res = data.results.filter((item: any) => {
+          if (item.backdrop_path !== null || undefined) {
+            return item;
+          }
+        });
+        dispatch(setPageMovieRender(res[random_number]));
+      });
   };
 };

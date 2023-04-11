@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { LOGO } from "../../constants";
+import { IMAGE } from "../../constants";
 import { IoMdArrowDropdown } from "react-icons/io";
 import styles from "./styles.module.css";
 import Search from "../search";
@@ -27,7 +27,7 @@ const NavBar = () => {
     <nav className={classes}>
       <div className={styles.navHeader}>
         <div className={styles.containerNav}>
-          <img className={styles.logo} src={LOGO.logo} />
+          <img className={styles.logo} src={IMAGE.logo} />
           <ul
             className={classesLinks}
             onMouseOver={() => setIsMouse(true)}

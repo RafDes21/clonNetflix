@@ -7,7 +7,7 @@ interface movieState {
   fantasy: string[];
   comedies: string[];
   moviesCategories: string[];
-  moviesRender: {};
+  moviesPageRender: {};
 }
 
 const initialState: movieState = {
@@ -17,7 +17,7 @@ const initialState: movieState = {
   fantasy: [],
   comedies: [],
   moviesCategories: [],
-  moviesRender: {},
+  moviesPageRender: {},
 };
 
 const movieSlice = createSlice({
@@ -43,8 +43,8 @@ const movieSlice = createSlice({
     setCategories: (state, action) => {
       state.moviesCategories = action.payload;
     },
-    setMovieRender: (state, action) => {
-      state.moviesRender = action.payload;
+    setPageMovieRender: (state, action) => {
+      state.moviesPageRender = action.payload;
     },
   },
 });
@@ -56,6 +56,6 @@ export const {
   setFantasy,
   setComedies,
   setCategories,
-  setMovieRender,
+  setPageMovieRender,
 } = movieSlice.actions;
 export default movieSlice.reducer;

@@ -2,6 +2,7 @@ import React, { useRef } from "react";
 import styles from "./styles.module.css";
 import { Card } from "../card";
 import { MdArrowBackIosNew, MdOutlineArrowForwardIos } from "react-icons/md";
+import { IMAGE } from "../../constants";
 
 interface Props {
   title: string;
@@ -63,7 +64,15 @@ const ContainSlider: React.FC<Props> = ({ title, arrayList }) => {
       <h3>{title}</h3>
       <div className={styles.containerSlider} ref={refLeft}>
         {arrayList.map((item: any, index: any) => (
-          <Card key={index} title={item.title} image={item.backdrop_path} />
+          <Card
+            key={index}
+            title={item.title}
+            image={
+              item.backdrop_path
+                ? `https://image.tmdb.org/t/p/w500/${item.backdrop_path}`
+                : IMAGE.imageNotAvailable
+            }
+          />
         ))}
       </div>
       <MdArrowBackIosNew

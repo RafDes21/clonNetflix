@@ -8,16 +8,9 @@ import {
   setMovieRender,
 } from "../slices/moviesBrowsSlice";
 
-interface Movie {
-  id: number;
-  title: string;
-  poster_path: string;
-  overview: string;
-}
-
 interface PopularLoadedAction {
   type: string;
-  payload: Movie[];
+  payload: Object[];
 }
 
 const env = import.meta.env.VITE_API_KEY;
@@ -41,22 +34,6 @@ export const getPopular = () => {
   };
 };
 
-export const getMovieRandom = () => {
-  return async (dispatch: Dispatch<PopularLoadedAction>) => {
-    const random_number = Math.floor(Math.random() * 20) + 1;
-    const api = `https://api.themoviedb.org/3/discover/movie?api_key=${env}&sort_by=popularity.desc`;
-
-    const res = await fetch(api).then((response) => {
-      if (!response.ok) {
-        throw new Error("error");
-      }
-      return response.json();
-    });
-console.log("tambien");
-
-    dispatch(setMovieRender(res.results[random_number]));
-  };
-};
 // theatres
 export const getTheatres = () => {
   return async (dispatch: Dispatch<PopularLoadedAction>) => {
@@ -113,5 +90,23 @@ export const getTop = () => {
       return response.json();
     });
     dispatch(setTops(res.results));
+  };
+};
+
+// movie random for header component
+export const getMovieRandom = () => {
+  return (dispatch: Dispatch<PopularLoadedAction>) => {
+    const random_number = Math.floor(Math.random() * 19) + 1;
+    const API = `https://api.themoviedb.org/3/discover/movie?api_key=${env}&sort_by=popularity.desc`;
+    fetch(API)
+      .then((resolve) => resolve.json())
+      .then((data) => {
+        const res = data.results.filter((item:any) => {
+          if (item.backdrop_path !== null) {
+            return item;
+          }
+        });
+        dispatch(setMovieRender(res[random_number]));
+      });
   };
 };

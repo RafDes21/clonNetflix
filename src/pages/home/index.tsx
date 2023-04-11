@@ -21,7 +21,6 @@ const Home = () => {
   const moviesTops: any = useAppSelector((state) => state.movieBrowse.top);
 
   const movie: any = useAppSelector((state) => state.movieBrowse.movieRender);
-console.log(moviesPopular);
 
   useEffect(() => {
     dispatch(getPopular());

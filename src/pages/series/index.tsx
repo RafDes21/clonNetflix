@@ -36,18 +36,24 @@ const Series = () => {
 
   return (
     <div>
-      <Header
-        image={`https://image.tmdb.org/t/p/original${seriesOneRender.backdrop_path}`}
-        title={seriesOneRender.original_name}
-        description={seriesOneRender.overview}
-      />
-      <div className={styles.contentMain}>
-        <ContainSlider title="New" arrayList={seriesNew} />
-        <ContainSlider title="Comedies" arrayList={seriesComedies} />
-        <ContainSlider title="Family" arrayList={seriesFamily} />
-        <ContainSlider title="Kids" arrayList={seriesKids} />
-        <ContainSlider title="Crime" arrayList={seriesCrime} />
-      </div>
+      {seriesOneRender.backdrop_path ? 
+        <>
+          <Header
+            image={`https://image.tmdb.org/t/p/original${seriesOneRender.backdrop_path}`}
+            title={seriesOneRender.original_name}
+            description={seriesOneRender.overview}
+          />
+          <div className={styles.contentMain}>
+            <ContainSlider title="New" arrayList={seriesNew} />
+            <ContainSlider title="Comedies" arrayList={seriesComedies} />
+            <ContainSlider title="Family" arrayList={seriesFamily} />
+            <ContainSlider title="Kids" arrayList={seriesKids} />
+            <ContainSlider title="Crime" arrayList={seriesCrime} />
+          </div>
+        </>
+      : 
+        <h1>loading</h1>
+      }
     </div>
   );
 };

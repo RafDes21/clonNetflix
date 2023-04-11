@@ -18,8 +18,7 @@ const env = import.meta.env.VITE_API_KEY;
 
 export const getSeriesCategories = () => {
   return async (dispatch: Dispatch<SeriesLoadedAction>) => {
-    const API =
-      `https://api.themoviedb.org/3/genre/tv/list?api_key=${env}&language=en-US`;
+    const API = `https://api.themoviedb.org/3/genre/tv/list?api_key=${env}&language=en-US`;
     const result = await fetch(API).then((response) => {
       if (!response.ok) {
         throw new Error("error");
@@ -96,15 +95,16 @@ export const getSeriesRandom = () => {
   return async (dispatch: Dispatch<SeriesLoadedAction>) => {
     const random_number = Math.floor(Math.random() * 20) + 1;
     const idRandom = 16;
-    const api = `https://api.themoviedb.org/3/discover/tv?api_key=${env}&page=1&with_genres=${idRandom}&sort_by=popularity.desc`;
-
-    const res = await fetch(api).then((response) => {
-      if (!response.ok) {
-        throw new Error("error");
-      }
-      return response.json();
-    });
-
-    dispatch(setSerRender(res.results[random_number]));
+    const API = `https://api.themoviedb.org/3/discover/tv?api_key=${env}&page=1&with_genres=${idRandom}&sort_by=popularity.desc`;
+    fetch(API)
+      .then((resolve) => resolve.json())
+      .then((data) => {
+        const res = data.results.filter((item: any) => {
+          if (item.backdrop_path !== null || undefined) {
+            return item;
+          }
+        });
+        dispatch(setSerRender(res[random_number]));
+      });
   };
 };
