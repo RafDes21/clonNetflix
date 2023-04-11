@@ -20,28 +20,31 @@ interface PopularLoadedAction {
   payload: Movie[];
 }
 
+const env = import.meta.env.VITE_API_KEY;
+
 // popular
 export const getPopular = () => {
   return async (dispatch: Dispatch<PopularLoadedAction>) => {
-    const api =
-      "https://api.themoviedb.org/3/discover/movie?api_key=e7e16089afd28414ef3120b577232770&sort_by=popularity.desc";
+    const api = `https://api.themoviedb.org/3/discover/movie?api_key=${env}&sort_by=popularity.desc`;
+    try {
+      const res = await fetch(api).then((response) => {
+        if (!response.ok) {
+          throw new Error("error");
+        }
+        return response.json();
+      });
 
-    const res = await fetch(api).then((response) => {
-      if (!response.ok) {
-        throw new Error("error");
-      }
-      return response.json();
-    });
-
-    dispatch(setPopular(res.results));
+      dispatch(setPopular(res.results));
+    } catch (error) {
+      console.log(error);
+    }
   };
 };
 
 export const getMovieRandom = () => {
   return async (dispatch: Dispatch<PopularLoadedAction>) => {
     const random_number = Math.floor(Math.random() * 20) + 1;
-    const api =
-      "https://api.themoviedb.org/3/discover/movie?api_key=e7e16089afd28414ef3120b577232770&sort_by=popularity.desc";
+    const api = `https://api.themoviedb.org/3/discover/movie?api_key=${env}&sort_by=popularity.desc`;
 
     const res = await fetch(api).then((response) => {
       if (!response.ok) {
@@ -49,6 +52,7 @@ export const getMovieRandom = () => {
       }
       return response.json();
     });
+console.log("tambien");
 
     dispatch(setMovieRender(res.results[random_number]));
   };
@@ -56,8 +60,7 @@ export const getMovieRandom = () => {
 // theatres
 export const getTheatres = () => {
   return async (dispatch: Dispatch<PopularLoadedAction>) => {
-    const api =
-      "https://api.themoviedb.org/3/discover/movie?api_key=e7e16089afd28414ef3120b577232770&primary_release_date.gte=2014-09-15&primary_release_date.lte=2014-10-22";
+    const api = `https://api.themoviedb.org/3/discover/movie?api_key=${env}&primary_release_date.gte=2014-09-15&primary_release_date.lte=2014-10-22`;
 
     const res = await fetch(api).then((response) => {
       if (!response.ok) {
@@ -72,8 +75,7 @@ export const getTheatres = () => {
 // children
 export const getChildren = () => {
   return async (dispatch: Dispatch<PopularLoadedAction>) => {
-    const api =
-      "https://api.themoviedb.org/3/discover/movie?api_key=e7e16089afd28414ef3120b577232770&certification_country=US&certification.lte=G&sort_by=popularity.desc";
+    const api = `https://api.themoviedb.org/3/discover/movie?api_key=${env}&certification_country=US&certification.lte=G&sort_by=popularity.desc`;
 
     const res = await fetch(api).then((response) => {
       if (!response.ok) {
@@ -88,8 +90,7 @@ export const getChildren = () => {
 // comedies
 export const getComedy = () => {
   return async (dispatch: Dispatch<PopularLoadedAction>) => {
-    const api =
-      "https://api.themoviedb.org/3/discover/movie?api_key=e7e16089afd28414ef3120b577232770&with_genres=35&with_cast=23659&sort_by=revenue.desc";
+    const api = `https://api.themoviedb.org/3/discover/movie?api_key=${env}&with_genres=35&with_cast=23659&sort_by=revenue.desc`;
 
     const res = await fetch(api).then((response) => {
       if (!response.ok) {
@@ -103,8 +104,7 @@ export const getComedy = () => {
 // tops
 export const getTop = () => {
   return async (dispatch: Dispatch<PopularLoadedAction>) => {
-    const api =
-      "https://api.themoviedb.org/3/discover/movie?api_key=e7e16089afd28414ef3120b577232770&primary_release_year=2020&sort_by=popularity.desc";
+    const api = `https://api.themoviedb.org/3/discover/movie?api_key=${env}&primary_release_year=2020&sort_by=popularity.desc`;
 
     const res = await fetch(api).then((response) => {
       if (!response.ok) {

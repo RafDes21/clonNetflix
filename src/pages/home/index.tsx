@@ -21,6 +21,7 @@ const Home = () => {
   const moviesTops: any = useAppSelector((state) => state.movieBrowse.top);
 
   const movie: any = useAppSelector((state) => state.movieBrowse.movieRender);
+console.log(moviesPopular);
 
   useEffect(() => {
     dispatch(getPopular());
@@ -29,22 +30,28 @@ const Home = () => {
     dispatch(getComedy());
     dispatch(getTop());
     dispatch(getMovieRandom());
-  }, [dispatch]);
+  }, []);
 
   return (
     <div className={styles.home}>
-      <Header
-        image={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}
-        title={movie.title}
-        description={movie.overview}
-      />
-      <div className={styles.contentMain}>
-        <ContainSlider title="Popular" arrayList={moviesPopular} />
-        <ContainSlider title="Theatres" arrayList={moviesTheatres} />
-        <ContainSlider title="Children" arrayList={moviesChildren} />
-        <ContainSlider title="Comedy" arrayList={moviesComedy} />
-        <ContainSlider title="Tops" arrayList={moviesTops} />
-      </div>
+      {!movie.backdrop_path ? (
+        <h1 className={styles.loading}>loading</h1>
+      ) : (
+        <>
+          <Header
+            image={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}
+            title={movie.title}
+            description={movie.overview}
+          />
+          <div className={styles.contentMain}>
+            <ContainSlider title="Popular" arrayList={moviesPopular} />
+            <ContainSlider title="Theatres" arrayList={moviesTheatres} />
+            <ContainSlider title="Children" arrayList={moviesChildren} />
+            <ContainSlider title="Comedy" arrayList={moviesComedy} />
+            <ContainSlider title="Tops" arrayList={moviesTops} />
+          </div>
+        </>
+      )}
     </div>
   );
 };

@@ -26,7 +26,7 @@ const Series = () => {
   useEffect(() => {
     dispatch(getSeriesCategories());
     dispatch(getSeriesRandom());
-  }, [dispatch]);
+  }, []);
 
   useEffect(() => {
     seriesForIdAndName.map((state: any) =>

@@ -5,7 +5,7 @@ import { MdArrowBackIosNew, MdOutlineArrowForwardIos } from "react-icons/md";
 
 interface Props {
   title: string;
-  arrayList: object[];
+  arrayList: string[];
 }
 
 const ContainSlider: React.FC<Props> = ({ title, arrayList }) => {

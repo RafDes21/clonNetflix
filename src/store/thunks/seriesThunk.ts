@@ -14,10 +14,12 @@ interface SeriesLoadedAction {
   payload: Object[];
 }
 
+const env = import.meta.env.VITE_API_KEY;
+
 export const getSeriesCategories = () => {
   return async (dispatch: Dispatch<SeriesLoadedAction>) => {
     const API =
-      "https://api.themoviedb.org/3/genre/tv/list?api_key=e7e16089afd28414ef3120b577232770&language=en-US";
+      `https://api.themoviedb.org/3/genre/tv/list?api_key=${env}&language=en-US`;
     const result = await fetch(API).then((response) => {
       if (!response.ok) {
         throw new Error("error");
@@ -33,7 +35,7 @@ export const getSeriesCategories = () => {
 export const getForIdCategory = (id: number, nameCategory: string) => {
   return async (dispatch: Dispatch<SeriesLoadedAction>) => {
     if (nameCategory === "News") {
-      const API = `https://api.themoviedb.org/3/discover/tv?api_key=e7e16089afd28414ef3120b577232770&page=1&with_genres=${id}&sort_by=popularity.desc`;
+      const API = `https://api.themoviedb.org/3/discover/tv?api_key=${env}&page=1&with_genres=${id}&sort_by=popularity.desc`;
       const result = await fetch(API).then((response) => {
         if (!response.ok) {
           throw new Error("error");
@@ -44,7 +46,7 @@ export const getForIdCategory = (id: number, nameCategory: string) => {
       dispatch(setNews(result.results));
     }
     if (nameCategory === "Crime") {
-      const API = `https://api.themoviedb.org/3/discover/tv?api_key=e7e16089afd28414ef3120b577232770&page=1&with_genres=${id}&sort_by=popularity.desc`;
+      const API = `https://api.themoviedb.org/3/discover/tv?api_key=${env}&page=1&with_genres=${id}&sort_by=popularity.desc`;
       const result = await fetch(API).then((response) => {
         if (!response.ok) {
           throw new Error("error");
@@ -55,7 +57,7 @@ export const getForIdCategory = (id: number, nameCategory: string) => {
       dispatch(setCrime(result.results));
     }
     if (nameCategory === "Family") {
-      const API = `https://api.themoviedb.org/3/discover/tv?api_key=e7e16089afd28414ef3120b577232770&page=1&with_genres=${id}&sort_by=popularity.desc`;
+      const API = `https://api.themoviedb.org/3/discover/tv?api_key=${env}&page=3&with_genres=${id}&sort_by=popularity.desc`;
       const result = await fetch(API).then((response) => {
         if (!response.ok) {
           throw new Error("error");
@@ -66,7 +68,7 @@ export const getForIdCategory = (id: number, nameCategory: string) => {
       dispatch(setFamily(result.results));
     }
     if (nameCategory === "Kids") {
-      const API = `https://api.themoviedb.org/3/discover/tv?api_key=e7e16089afd28414ef3120b577232770&page=1&with_genres=${id}&sort_by=popularity.desc`;
+      const API = `https://api.themoviedb.org/3/discover/tv?api_key=${env}&page=1&with_genres=${id}&sort_by=popularity.desc`;
       const result = await fetch(API).then((response) => {
         if (!response.ok) {
           throw new Error("error");
@@ -77,7 +79,7 @@ export const getForIdCategory = (id: number, nameCategory: string) => {
       dispatch(setKids(result.results));
     }
     if (nameCategory === "Comedy") {
-      const API = `https://api.themoviedb.org/3/discover/tv?api_key=e7e16089afd28414ef3120b577232770&page=1&with_genres=${id}&sort_by=popularity.desc`;
+      const API = `https://api.themoviedb.org/3/discover/tv?api_key=${env}&page=1&with_genres=${id}&sort_by=popularity.desc`;
       const result = await fetch(API).then((response) => {
         if (!response.ok) {
           throw new Error("error");
@@ -94,7 +96,7 @@ export const getSeriesRandom = () => {
   return async (dispatch: Dispatch<SeriesLoadedAction>) => {
     const random_number = Math.floor(Math.random() * 20) + 1;
     const idRandom = 16;
-    const api = `https://api.themoviedb.org/3/discover/tv?api_key=e7e16089afd28414ef3120b577232770&page=1&with_genres=${idRandom}&sort_by=popularity.desc`;
+    const api = `https://api.themoviedb.org/3/discover/tv?api_key=${env}&page=1&with_genres=${idRandom}&sort_by=popularity.desc`;
 
     const res = await fetch(api).then((response) => {
       if (!response.ok) {
