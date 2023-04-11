@@ -52,7 +52,7 @@ const Series = () => {
           </div>
         </>
       : 
-        <h1>loading</h1>
+        <h1 className={styles.loading}>loading</h1>
       }
     </div>
   );
