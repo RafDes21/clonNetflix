@@ -1,6 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import Layout from "../layout";
-import { Home, Movies, Series } from "../pages";
+import { Home, Filter, Movies, Series } from "../pages";
+
 
 const CompRoutes = () => {
   return (
@@ -9,6 +10,7 @@ const CompRoutes = () => {
         <Route index element={<Home />} />
         <Route path="movies" element={<Movies />} />
         <Route path="series" element={<Series />} />
+        <Route path="search" element={<Filter/>}/>
       </Route>
     </Routes>
   );

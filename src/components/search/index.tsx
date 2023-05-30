@@ -2,15 +2,27 @@ import React, { useState } from "react";
 import { GoSearch } from "react-icons/go";
 import { IoMdArrowDropdown } from "react-icons/io";
 import styles from "./styles.module.css";
+import { useNavigate } from "react-router-dom";
 
 const Search = () => {
-  const [state, setState] = useState({ filter: "", isActive: false });
+  const navigate = useNavigate();
+  const [keyword, setKeyword] = useState("");
+  const [isActive, setIsActive] = useState(false);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setState({ ...state, filter: e.target.value });
+    setKeyword(e.target.value.trim());
   };
   const handleClick = () => {
-    setState({ ...state, isActive: !state.isActive });
+    if (keyword.length === 0) {
+      return setIsActive(!isActive);
+    }
+    if (keyword.length < 4) {
+      alert("Tienes que escribir más de 4 carácteres");
+    } else {
+      setIsActive(false);
+      navigate(`/search/?keyword=${keyword}`);
+      setKeyword("")
+    }
   };
 
   return (
@@ -20,7 +32,8 @@ const Search = () => {
         <input
           placeholder="Títulos, personas, géneros"
           onChange={handleInputChange}
-          style={{ display: state.isActive ? "block" : "none" }}
+          style={{ display: isActive ? "block" : "none" }}
+          value={keyword}
         />
       </div>
       <div className={styles.containerAvatar}>

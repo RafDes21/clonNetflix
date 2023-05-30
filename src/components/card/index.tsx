@@ -16,7 +16,7 @@ export const Card: React.FC<props> = ({ image, title }) => {
   return (
     <div className={styles.container}>
       {isActiveCard ? (
-        <img src={image} alt={title} />
+        <img src={`https://image.tmdb.org/t/p/w500/${image}`} alt={title} />
       ) : (
         <div className={styles.card}>
           <div className={styles.cardHeader}>
