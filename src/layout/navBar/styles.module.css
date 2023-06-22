@@ -10,15 +10,15 @@
   height: 70px;
   z-index: 90;
 }
+.nav.active {
+  background-color: var(--black);
+}
 .navHeader {
   display: flex;
   justify-content: space-between;
   align-items: center;
   height: 100%;
   padding: 0 80px;
-}
-.nav.active {
-  background-color: var(--black);
 }
 .containerNav {
   display: flex;

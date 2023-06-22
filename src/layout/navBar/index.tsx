@@ -3,28 +3,22 @@ import { Link } from "react-router-dom";
 import { IMAGE } from "../../constants";
 import { IoMdArrowDropdown } from "react-icons/io";
 import styles from "./styles.module.css";
-import Search from "../search";
+import Search from "../../components/search";
+import useScroll from "../../hooks/useSccroll";
 
 const NavBar = () => {
-  const [isActive, setIsActive] = useState(false);
+  const scrollY = useScroll()
+
   const [isMouse, setIsMouse] = useState(false);
 
-  const handleWindowScroll = () => {
-    if (window.scrollY > 70) {
-      setIsActive(true);
-    } else {
-      setIsActive(false);
-    }
-  };
-  window.addEventListener("scroll", handleWindowScroll);
 
-  const classes = `${styles["nav"]} ${isActive ? styles.active : ""}`;
+
   const classesLinks = `${styles["containerLink"]} ${
     isMouse ? styles.active : ""
   }`;
 
   return (
-    <nav className={classes}>
+    <nav className={`${styles.nav} ${scrollY < 70 ? '' : styles.active}`}>
       <div className={styles.navHeader}>
         <div className={styles.containerNav}>
           <img className={styles.logo} src={IMAGE.logo} />
