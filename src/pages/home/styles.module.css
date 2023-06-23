@@ -1,9 +1,7 @@
 .contentMain {
   position: relative;
-transform: translateY(-200px);
-z-index: 90;
-  background-color: aliceblue;
-border: 1px solid green;
+  transform: translateY(-200px);
+  z-index: 10;
 }
 .loading {
   height: 100vh;
@@ -15,11 +13,11 @@ border: 1px solid green;
 
 @media screen and (max-width: 991px) {
   .contentMain {
-    padding-left: 20px;
+    transform: translateY(-70px);
   }
 }
 @media screen and (max-width: 400px) {
   .contentMain {
-    padding-left: 10px;
+    transform: translateY(-20px);
   }
 }
