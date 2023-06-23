@@ -12,6 +12,17 @@ interface props {
 
 export const Card: React.FC<props> = ({ image, title }) => {
   const [isActiveCard, setIsActiveCard] = useState(true);
+  // const [show, setShow] = useState(true);
+
+  // const onMouseOut = () => {
+  //   setShow(false);
+  // };
+
+  // const onMouseOver = () => {
+  //   setShow(true);
+  // };
+  // onMouseOver={onMouseOver}
+  // onMouseOut={onMouseOut}
 
   return (
     <div className={styles.container}>

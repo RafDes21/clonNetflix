@@ -2,14 +2,11 @@ import React from "react";
 import styles from "./styles.module.css";
 import { GrPlayFill } from "react-icons/gr";
 import { AiOutlineInfoCircle } from "react-icons/ai";
+import { HeaderProps } from "../../types/types";
 
-type props = {
-  image: string;
-  title: string;
-  description: string;
-};
 
-const Header: React.FC<props> = ({ image, title, description }) => {
+
+const Header: React.FC<HeaderProps> = ({ image, title, description }) => {
   return (
     <div className={styles.containerHeader}>
       <img src={image} alt={title} />

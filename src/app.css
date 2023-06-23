@@ -12,7 +12,7 @@
   padding: 0;
 }
 .app {
-  padding: 0 80px;
+ 
   background-color: var(--background);
   position: relative;
   overflow: hidden;

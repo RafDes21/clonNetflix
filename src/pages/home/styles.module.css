@@ -1,9 +1,11 @@
 .contentMain {
   position: relative;
-  padding-top: 50%;
-  padding-left: 0;
+transform: translateY(-200px);
+z-index: 90;
+  background-color: aliceblue;
+border: 1px solid green;
 }
-.loading{
+.loading {
   height: 100vh;
   display: flex;
   justify-content: center;
