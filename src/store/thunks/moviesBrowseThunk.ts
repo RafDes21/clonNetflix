@@ -87,8 +87,11 @@ export const getTop = () => {
       if (!response.ok) {
         throw new Error("error");
       }
+      
+      
       return response.json();
     });
+
     dispatch(setTops(res.results));
   };
 };
