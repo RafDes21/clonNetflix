@@ -1,23 +1,23 @@
 .contentMain {
   position: relative;
-  padding-top: 50%;
-  padding-left: 0;
+  transform: translateY(-200px);
+  z-index: 10;
 }
 .loading {
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  color: var(--primary);
+  color: aliceblue;
 }
 
 @media screen and (max-width: 991px) {
   .contentMain {
-    padding-left: 20px;
+    transform: translateY(-70px);
   }
 }
 @media screen and (max-width: 400px) {
   .contentMain {
-    padding-left: 10px;
+    transform: translateY(-2px);
   }
 }

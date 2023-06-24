@@ -1,6 +1,5 @@
 .container {
-  position: relative;
-  margin-bottom: 40px;
+  margin-top: 50px;
 }
 .container h3 {
   color: var(--primary);
@@ -9,26 +8,31 @@
 }
 .containerSlider {
   display: flex;
+  position: relative;
+  padding-left: 50px;
+  overflow: hidden;
+}
+.containerSlider.active {
+  transition: all 0.5s;
+  padding-left: 0;
 }
 .arrowLeft {
   position: absolute;
   color: var(--primary);
   font-size: 40px;
-  bottom: 4px;
-  height: 140px;
+  height: 100%;
   background-color: var(--black-transparent);
   padding: 0 5px;
-  left: -83px;
+  left: 0;
 }
 .arrowRight {
   position: absolute;
   color: var(--primary);
   font-size: 40px;
-  bottom: 4px;
-  height: 140px;
+  height: 100%;
   background-color: var(--black-transparent);
   padding: 0 10px;
-  right: -82px;
+  right: 0;
 }
 @media screen and (max-width: 991px) {
   .container {

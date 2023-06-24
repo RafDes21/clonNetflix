@@ -2,9 +2,9 @@
   --background: #141414;
   --primary: #f7f7f7;
   --secondary: #999;
-  --text-primary:#e50914;
-  --black:#000;
-  --black-transparent:#000000bb;
+  --text-primary: #e50914;
+  --black: #000;
+  --black-transparent: #000000bb;
   --secondary-transparent: #99999995;
 }
 * {
@@ -12,21 +12,15 @@
   padding: 0;
 }
 .app {
- 
   background-color: var(--background);
-  position: relative;
-  overflow: hidden;
 }
-@media only screen and (max-width:991px) {
-  .app{
-    padding: 0 40px ;
+@media only screen and (max-width: 991px) {
+  .app {
+    padding: 0 40px;
   }
 }
-@media only screen and (max-width:991px) {
-  .app{
-    padding: 0  ;
+@media only screen and (max-width: 991px) {
+  .app {
+    padding: 0;
   }
 }
-
-
-
