@@ -11,10 +11,10 @@ interface Props {
 
 const ContainSlider: React.FC<Props> = ({ title, arrayList }) => {
   const cardContainerRef = useRef<HTMLDivElement>(null);
-  const [paddingValue, setPaddingValue] = useState<boolean>(true);
+  const [isActive, setIsActive] = useState<boolean>(true);
 
   const handleScrollLeft = () => {
-    setPaddingValue(false);
+    
     const cardContainer = cardContainerRef.current;
     if (cardContainer) {
       const lastCard = cardContainer.lastElementChild;
@@ -25,6 +25,7 @@ const ContainSlider: React.FC<Props> = ({ title, arrayList }) => {
   };
 
   const handleScrollRight = () => {
+    setIsActive(false);
     if (cardContainerRef.current) {
       const cardContainer = cardContainerRef.current;
       const firstCard = cardContainer.firstElementChild;
@@ -41,7 +42,7 @@ const ContainSlider: React.FC<Props> = ({ title, arrayList }) => {
         <div className={styles.Slider}>
           <div
             className={`${styles.containerSlider} ${
-              paddingValue ? "" : styles.active
+              isActive ? "" : styles.active
             }`}
             ref={cardContainerRef}
           >
@@ -60,7 +61,7 @@ const ContainSlider: React.FC<Props> = ({ title, arrayList }) => {
         </div>
         <MdArrowBackIosNew
           onClick={handleScrollLeft}
-          className={styles.arrowLeft}
+          className={`${styles.arrowLeft} ${isActive? "":styles.active}`}
         />
         <MdOutlineArrowForwardIos
           onClick={handleScrollRight}
