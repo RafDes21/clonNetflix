@@ -61,7 +61,7 @@ const ContainSlider: React.FC<Props> = ({ title, arrayList }) => {
         </div>
         <MdArrowBackIosNew
           onClick={handleScrollLeft}
-          className={`${styles.arrowLeft} ${isActive? "":styles.active}`}
+          className={`${isActive? "":styles.arrowLeft}`}
         />
         <MdOutlineArrowForwardIos
           onClick={handleScrollRight}
