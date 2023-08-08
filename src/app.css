@@ -7,6 +7,19 @@
   --black: #000;
   --black-transparent: #000000bb;
   --secondary-transparent: #99999995;
+ /* Tamaños de fuentes */
+  --font-mobile: 16px;
+  --font-tablet: 18px;
+  --font-desktop: 20px;
+  --font-heading-mobile: 28px;
+  --font-heading-tablet: 36px;
+  --font-heading-desktop: 48px;
+  --font-subtitle-mobile: 20px;
+  --font-subtitle-tablet: 24px;
+  --font-subtitle-desktop: 28px;
+  --font-paragraph-mobile: 14px;
+  --font-paragraph-tablet: 16px;
+  --font-paragraph-desktop: 18px;
 }
 * {
   margin: 0;
@@ -19,13 +32,9 @@ body{
   background-color: var(--background);
   overflow: hidden;
 }
-@media only screen and (max-width: 991px) {
+/* @media only screen and (min-width: 991px) {
   .app {
     padding: 0 40px;
   }
-}
-@media only screen and (max-width: 991px) {
-  .app {
-    padding: 0;
-  }
-}
+} */
+
