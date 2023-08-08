@@ -1,8 +1,12 @@
+.container-results{
+    margin: 0 auto;
+}
 .containerCard{
     display: flex;
     flex-wrap: wrap;
-    margin: 100px 0;
+    margin: 100px auto;
     justify-content: space-between;
+    max-width: 90vw;
 }
 .cards{
     height:300px;

@@ -18,8 +18,8 @@ const Filter = () => {
     dispatch(fetchFilterMovies(keyword));
   }, [keyword]);
   return (
-    <div className="not">
-      <div className="container results">
+    <div className="container-filter">
+      <div className="container-results">
         <h2>
           Resultados de tu busqueda:
           {movies.length === 0 ? "no hay resultados" : keyword}
