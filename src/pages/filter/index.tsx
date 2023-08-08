@@ -29,9 +29,8 @@ const Filter = () => {
           </div>
         ) : (
           movies.map((movie: any, index) => (
-            <div className={styles.cards}>
+            <div className={styles.cards} key={index}>
               <CardFilter
-                key={index}
                 title={movie.title}
                 image={movie.poster_path}
               />
