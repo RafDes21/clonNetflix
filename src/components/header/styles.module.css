@@ -1,7 +1,9 @@
 .containerHeader {
   position: relative;
 }
-
+.contentNavbar {
+  max-width: 1440px;
+}
 .containerHeader img {
   width: 100%;
   height: 100%;

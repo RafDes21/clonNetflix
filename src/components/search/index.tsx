@@ -36,13 +36,7 @@ const Search = () => {
           value={keyword}
         />
       </div>
-      <div className={styles.containerAvatar}>
-        <img
-          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQWgre2gA2M9a9kP8Ckzh1naBiZtCbTcIe2ux5wNMh4Ho2sXyF61Z6CayB9jcrcEVN6ztY&usqp=CAU"
-          alt="avatar"
-        />
-        <IoMdArrowDropdown className={styles.avatarDown} />
-      </div>
+    
     </div>
   );
 };

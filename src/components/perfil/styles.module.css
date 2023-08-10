@@ -1,0 +1,15 @@
+.perfil{
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.perfilAvatar{
+    height: 30px;
+    border-radius: 5px;
+}
+
+.perfilShow{
+    color: var(--primary);
+    font-size: 25px;
+}

@@ -5,20 +5,19 @@ import { IoMdArrowDropdown } from "react-icons/io";
 import styles from "./styles.module.css";
 import Search from "../../components/search";
 import useScroll from "../../hooks/useSccroll";
+import { Perfil } from "../../components";
 
 const NavBar = () => {
-  const scrollY = useScroll()
+  const scrollY = useScroll();
 
   const [isMouse, setIsMouse] = useState(false);
-
-
 
   const classesLinks = `${styles["containerLink"]} ${
     isMouse ? styles.active : ""
   }`;
 
   return (
-    <nav className={`${styles.nav} ${scrollY < 70 ? '' : styles.active}`}>
+    <nav className={`${styles.nav} ${scrollY < 70 ? "" : styles.active}`}>
       <div className={styles.navHeader}>
         <div className={styles.containerNav}>
           <img className={styles.logo} src={IMAGE.logo} />
@@ -54,6 +53,9 @@ const NavBar = () => {
         </div>
         <div>
           <Search />
+        </div>
+        <div className={styles.showPerfil}>
+          <Perfil/>
         </div>
       </div>
     </nav>
