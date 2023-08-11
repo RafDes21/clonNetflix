@@ -1,14 +1,14 @@
-.perfil{
-    display: flex;
-    align-items: center;
+.perfil {
+  display: flex;
+  align-items: center;
 }
 
-.perfilAvatar{
-    height: 30px;
-    border-radius: 5px;
+.perfilAvatar {
+  height: 50px;
+  border-radius: 5px;
 }
 
-.perfilShow{
-    color: var(--primary);
-    font-size: 25px;
+.perfilShow {
+  color: var(--primary);
+  font-size: 25px;
 }

@@ -21,9 +21,9 @@ const NavBar = () => {
     <nav className={`${styles.nav} ${scrollY < 70 ? "" : styles.active}`}>
       <div className={styles.navHeader}>
         <div className={styles.containerNav}>
-          <GiHamburgerMenu onClick={()=>{showMenu()}} className={styles.menuBurger} />
+          <GiHamburgerMenu onClick={showMenu} className={styles.menuBurger} />
           <img className={styles.logo} src={IMAGE.logo} />
-          <ul className={`${styles.menuList} ${isShowMenu? "" : styles.active}`}>
+          <ul onClick={showMenu} className={`${styles.menuList} ${isShowMenu? "" : styles.active}`}>
             <Perfil showIcon={false}/>
             <li className={styles.navItem}>
               <Link className={styles.link} to="/">
