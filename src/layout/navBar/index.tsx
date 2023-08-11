@@ -10,7 +10,7 @@ import { Perfil } from "../../components";
 const NavBar = () => {
   const scrollY = useScroll();
 
-  const [isShowMenu, setIsShowMenu] = useState(true);
+  const [isShowMenu, setIsShowMenu] = useState(false);
 
 
   const showMenu = () => {
@@ -24,18 +24,18 @@ const NavBar = () => {
           <GiHamburgerMenu onClick={()=>{showMenu()}} className={styles.menuBurger} />
           <img className={styles.logo} src={IMAGE.logo} />
           <ul className={`${styles.menuList} ${isShowMenu? "" : styles.active}`}>
-            <Perfil/>
-            <li>
+            <Perfil showIcon={false}/>
+            <li className={styles.navItem}>
               <Link className={styles.link} to="/">
                 Inicio
               </Link>
             </li>
-            <li>
+            <li className={styles.navItem}>
               <Link className={styles.link} to="/series">
                 Series
               </Link>
             </li>
-            <li>
+            <li className={styles.navItem}>
               <Link className={styles.link} to="/movies">
                 Películas
               </Link>
@@ -54,7 +54,7 @@ const NavBar = () => {
           <Search />
         </div>
         <div className={styles.showPerfil}>
-          <Perfil />
+          <Perfil showIcon={true}/>
         </div>
       </div>
     </nav>

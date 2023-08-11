@@ -44,6 +44,7 @@
 .containerNav {
   display: flex;
   align-items: center;
+  gap: 10px;
 }
 .menuList {
   background: linear-gradient(to right, black 70%, rgba(0, 0, 0, 0.36) 30%);
@@ -58,6 +59,16 @@
 }
 .menuList.active {
   transform: translateX(-100%);
+}
+
+.navItem{
+  list-style: none;
+  margin: 40px 0;
+}
+
+.link{
+  text-decoration: none;
+  color: var(--primary);
 }
 
 /* .containerLink li {

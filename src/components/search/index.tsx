@@ -21,7 +21,7 @@ const Search = () => {
     } else {
       setIsActive(false);
       navigate(`/search/?keyword=${keyword}`);
-      setKeyword("")
+      setKeyword("");
     }
   };
 
@@ -36,7 +36,6 @@ const Search = () => {
           value={keyword}
         />
       </div>
-    
     </div>
   );
 };
