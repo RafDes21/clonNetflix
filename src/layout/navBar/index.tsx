@@ -12,10 +12,9 @@ const NavBar = () => {
 
   const [isShowMenu, setIsShowMenu] = useState(false);
 
-
   const showMenu = () => {
-    setIsShowMenu(!isShowMenu)
-  }
+    setIsShowMenu(!isShowMenu);
+  };
 
   return (
     <nav className={`${styles.nav} ${scrollY < 70 ? "" : styles.active}`}>
@@ -23,8 +22,13 @@ const NavBar = () => {
         <div className={styles.containerNav}>
           <GiHamburgerMenu onClick={showMenu} className={styles.menuBurger} />
           <img className={styles.logo} src={IMAGE.logo} />
-          <ul onClick={showMenu} className={`${styles.menuList} ${isShowMenu? "" : styles.active}`}>
-            <Perfil showIcon={false}/>
+          <ul
+            onClick={showMenu}
+            className={`${styles.menuList} ${isShowMenu ? "" : styles.active}`}
+          >
+            <div className={styles.showPerfil}>
+              <Perfil showIcon={false} />
+            </div>
             <li className={styles.navItem}>
               <Link className={styles.link} to="/">
                 Inicio
@@ -50,11 +54,11 @@ const NavBar = () => {
             <IoMdArrowDropdown />
           </span> */}
         </div>
-        <div>
+        <div className={styles.perfilSearch}>
           <Search />
-        </div>
-        <div className={styles.showPerfil}>
-          <Perfil showIcon={true}/>
+          <div className={styles.showPerfilTablet}>
+            <Perfil showIcon={true} />
+          </div>
         </div>
       </div>
     </nav>

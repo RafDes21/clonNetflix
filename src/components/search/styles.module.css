@@ -4,31 +4,36 @@
   gap: 10px;
 }
 .containerInput {
-  border: 1px solid var(--primary);
+  border: 0.5px solid var(--primary);
   height: 50%;
   display: flex;
   align-items: center;
   gap: 10px;
   padding: 2px 7px;
+  border-radius: 5px;
+  background-color: var(--black-transparent);
 }
 .containerInput input {
   border: none;
   background-color: transparent;
-  font-size: 14px;
+  font-size: var(--font-paragraph-mobile);
   outline: none;
-  padding: 10px 0;
+  padding: 7px 0;
+}
+.containerInput input::placeholder {
+  color: var(--primary);
 }
 .containerInput input:focus {
   caret-color: var(--primary);
   color: var(--primary);
 }
 .inputIcon {
-  font-size: 20px;
+  font-size: 18px;
   color: var(--primary);
 }
 
-@media only screen and (max-width: 768px) {
-  .searchAvatar {
+@media only screen and (min-width: 768px) {
+  /* .searchAvatar {
     display: flex;
     align-items: center;
     gap: 10px;
@@ -55,6 +60,33 @@
   .inputIcon {
     font-size: 16px;
     color: var(--primary);
+  } */
+  .searchAvatar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
   }
-
+  .containerInput {
+    border: 1px solid var(--primary);
+    height: 50%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 2px 7px;
+  }
+  .containerInput input {
+    border: none;
+    background-color: transparent;
+    font-size: 14px;
+    outline: none;
+    padding: 10px 0;
+  }
+  .containerInput input:focus {
+    caret-color: var(--primary);
+    color: var(--primary);
+  }
+  .inputIcon {
+    font-size: 20px;
+    color: var(--primary);
+  }
 }

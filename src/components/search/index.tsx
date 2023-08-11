@@ -28,13 +28,13 @@ const Search = () => {
   return (
     <div className={styles.searchAvatar}>
       <div className={styles.containerInput}>
-        <GoSearch className={styles.inputIcon} onClick={handleClick} />
         <input
           placeholder="Títulos, personas, géneros"
           onChange={handleInputChange}
-          style={{ display: isActive ? "block" : "none" }}
+          // style={{ display: isActive ? "block" : "none" }}
           value={keyword}
         />
+        <GoSearch className={styles.inputIcon} onClick={handleClick} />
       </div>
     </div>
   );
