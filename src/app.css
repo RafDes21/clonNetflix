@@ -30,7 +30,7 @@ body{
 }
 .app {
   background-color: var(--background);
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 /* @media only screen and (min-width: 991px) {
   .app {

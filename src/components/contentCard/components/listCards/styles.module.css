@@ -1,4 +1,6 @@
 .containerCards{
     display: flex;
     gap: 10px;
+    background-color: rgb(35, 210, 44);
+    overflow-x: auto;
 }
