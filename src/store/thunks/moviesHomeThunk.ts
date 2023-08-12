@@ -7,7 +7,13 @@ import {
   setComedies,
   setTops,
 } from "../slices/movieHomeSlice";
-import { getChildren, getPopular, getTheater } from "../../services/moviesHome";
+import {
+  getChildren,
+  getComedy,
+  getPopular,
+  getTheater,
+  getTop,
+} from "../../services/moviesHome";
 import { transformMovieData } from "../../utils/movieUtils";
 import { MovieData } from "../../types/types";
 
@@ -48,36 +54,26 @@ export const fetchChildren = () => {
   };
 };
 
+export const fetchComedy = () => {
+  return async (dispatch: Dispatch) => {
+    try {
+      const data = await getComedy();
+      const transformedData: MovieData[] = transformMovieData(data);
+      dispatch(setComedies(transformedData));
+    } catch (error) {
+      console.log("Error in fetchComedy thunk", error);
+    }
+  };
+};
 
-
-// comedies
-// export const getComedy = () => {
-//   return async (dispatch: Dispatch<PopularLoadedAction>) => {
-//     const api = `https://api.themoviedb.org/3/discover/movie?api_key=${env}&with_genres=35&with_cast=23659&sort_by=revenue.desc`;
-
-//     const res = await fetch(api).then((response) => {
-//       if (!response.ok) {
-//         throw new Error("error");
-//       }
-//       return response.json();
-//     });
-//     dispatch(setComedies(res.results));
-//   };
-// };
-// tops
-// export const getTop = () => {
-//   return async (dispatch: Dispatch<PopularLoadedAction>) => {
-//     const api = `https://api.themoviedb.org/3/discover/movie?api_key=${env}&primary_release_year=2020&sort_by=popularity.desc`;
-
-//     const res = await fetch(api).then((response) => {
-//       if (!response.ok) {
-//         throw new Error("error");
-//       }
-
-//       return response.json();
-//     });
-
-//     dispatch(setTops(res.results));
-//   };
-// };
-
+export const fetchTop = () => {
+  return async (dispatch: Dispatch) => {
+    try {
+      const data = await getTop();
+      const transformedData: MovieData[] = transformMovieData(data);
+      dispatch(setTops(transformedData));
+    } catch (error) {
+      console.log("Error in fetchTops thunk", error);
+    }
+  };
+};

@@ -2,9 +2,11 @@ import { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../store/hook/hook";
 import {
   fetchChildren,
+  fetchComedy,
   // getComedy,
   fetchPopular,
   fetchTeather,
+  fetchTop,
   // getTop,
   // getMovieRandom,
 } from "../../store/thunks/moviesHomeThunk";
@@ -25,8 +27,8 @@ const Home = () => {
   const moviesPopular = useAppSelector((state) => state.movieHome.popular);
   const moviesTeather = useAppSelector((state) => state.movieHome.teather);
   const moviesChildren = useAppSelector((state) => state.movieHome.children);
-  const moviesComedy: any = useAppSelector((state) => state.movieHome.comedies);
-  const moviesTops: any = useAppSelector((state) => state.movieHome.top);
+  const moviesComedy = useAppSelector((state) => state.movieHome.comedies);
+  const moviesTops = useAppSelector((state) => state.movieHome.top);
 
   const [isLoading, setIsLoading] = useState(true);
   const [randomPoster, setRandomPoster] = useState("");
@@ -43,9 +45,8 @@ const Home = () => {
     dispatch(fetchPopular());
     dispatch(fetchTeather());
     dispatch(fetchChildren());
-    // dispatch(getComedy());
-    // dispatch(getTop());
-    // dispatch(getMovieRandom());
+    dispatch(fetchComedy());
+    dispatch(fetchTop());
   }, []);
 
   return (
@@ -63,6 +64,12 @@ const Home = () => {
         <h1 className={styles.cardNotMobile}>hola</h1>
       </ContentCard>
       <ContentCard title={"Theater"} movies={moviesTeather}>
+        <h1 className={styles.cardNotMobile}>hola</h1>
+      </ContentCard>
+      <ContentCard title={"Comedies"} movies={moviesComedy}>
+        <h1 className={styles.cardNotMobile}>hola</h1>
+      </ContentCard>
+      <ContentCard title={"Top"} movies={moviesTops}>
         <h1 className={styles.cardNotMobile}>hola</h1>
       </ContentCard>
       <ContentCard title={"Children"} movies={moviesChildren}>
