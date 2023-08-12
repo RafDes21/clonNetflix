@@ -1,3 +1,7 @@
+.showIsNotMobile{
+  display: none;
+}
+
 .contentMain {
   position: relative;
   transform: translateY(-200px);

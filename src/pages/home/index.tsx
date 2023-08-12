@@ -8,7 +8,7 @@ import {
   getTop,
   getMovieRandom,
 } from "../../store/thunks/moviesBrowseThunk";
-import { ContainSlider, Header } from "../../components";
+import { ContainSlider, ContentSection, Header } from "../../components";
 import styles from "./styles.module.css";
 
 const Home = () => {
@@ -21,6 +21,8 @@ const Home = () => {
   const moviesTops: any = useAppSelector((state) => state.movieBrowse.top);
 
   const movie: any = useAppSelector((state) => state.movieBrowse.movieRender);
+  console.log(movie);
+  
 
   useEffect(() => {
     dispatch(getPopular());
@@ -33,6 +35,11 @@ const Home = () => {
 
   return (
     <div className={styles.home}>
+      <ContentSection>
+        <div className={styles.showIsNotMobile}>
+          render desktop
+        </div>
+      </ContentSection>
       {!movie.backdrop_path ? (
         <h1 className={styles.loading}>loading</h1>
       ) : (
