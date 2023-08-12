@@ -34,3 +34,7 @@ export interface MovieHomeState {
   top: string[];
   movieRender: {};
 }
+export interface RandomMovie {
+  poster: string;
+  image: string;
+}

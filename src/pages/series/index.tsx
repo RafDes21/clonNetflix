@@ -3,7 +3,7 @@ import { useAppDispatch, useAppSelector } from "../../store/hook/hook";
 import {
   getForIdCategory,
   getSeriesCategories,
-  getSeriesRandom,
+  // getSeriesRandom,
 } from "../../store/thunks/seriesThunk";
 import styles from "./styles.module.css";
 import { ContainSlider, Header } from "../../components";
@@ -25,7 +25,7 @@ const Series = () => {
 
   useEffect(() => {
     dispatch(getSeriesCategories());
-    dispatch(getSeriesRandom());
+    // dispatch(getSeriesRandom());
   }, []);
 
   useEffect(() => {

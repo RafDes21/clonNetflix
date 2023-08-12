@@ -1,5 +1,27 @@
-.showIsNotMobile{
+.showIsNotMobile {
   display: none;
+}
+
+@media (min-width: 768px) {
+  .showIsNotMobile {
+    display: block;
+    width: 100%;
+    height: 700px;
+    max-height: 700px;
+  }
+  .contentSectionImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+}
+
+@media (min-width: 1024px) {
+  .showIsNotMobile {
+    max-height: 1000px;
+    height: 940px;
+  }
 }
 
 .contentMain {
