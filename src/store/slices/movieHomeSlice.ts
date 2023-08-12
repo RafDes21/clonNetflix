@@ -1,29 +1,21 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { MovieData, MovieHomeState } from "../../types/types";
 
-interface movieState {
-  popular: string[];
-  theatres: string[];
-  children: string[];
-  comedies: string[];
-  top: string[];
-  movieRender:{}
-}
-
-const initialState: movieState = {
+const initialState: MovieHomeState = {
   popular: [],
   theatres: [],
   children: [],
   comedies: [],
   top: [],
-  movieRender:{}
+  movieRender: {},
 };
 
-const movieBrowseSlice = createSlice({
-  name: "movieBrowse",
+const movieHomeSlice = createSlice({
+  name: "movieHome",
   initialState,
 
   reducers: {
-    setPopular: (state, actions) => {
+    setPopular: (state, actions: PayloadAction<MovieData[]>) => {
       state.popular = actions.payload;
     },
     setTheatres: (state, actions) => {
@@ -39,11 +31,17 @@ const movieBrowseSlice = createSlice({
       state.top = actions.payload;
     },
     setMovieRender: (state, action) => {
-      state.movieRender = action.payload
-    }
+      state.movieRender = action.payload;
+    },
   },
 });
 
-export const { setPopular, setTheatres, setChildren, setComedies, setTops, setMovieRender } =
-  movieBrowseSlice.actions;
-export default movieBrowseSlice.reducer;
+export const {
+  setPopular,
+  setTheatres,
+  setChildren,
+  setComedies,
+  setTops,
+  setMovieRender,
+} = movieHomeSlice.actions;
+export default movieHomeSlice.reducer;

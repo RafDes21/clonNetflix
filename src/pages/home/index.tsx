@@ -3,34 +3,34 @@ import { useAppDispatch, useAppSelector } from "../../store/hook/hook";
 import {
   getChildren,
   getComedy,
-  getPopular,
+  fetchPopular,
   getTheatres,
   getTop,
   getMovieRandom,
-} from "../../store/thunks/moviesBrowseThunk";
+} from "../../store/thunks/moviesHomeThunk";
 import { ContainSlider, ContentSection, Header } from "../../components";
 import styles from "./styles.module.css";
 
 const Home = () => {
   const dispatch = useAppDispatch();
 
-  const moviesPopular: any = useAppSelector((state) => state.movieBrowse.popular);
-  const moviesTheatres: any = useAppSelector((state) => state.movieBrowse.theatres);
-  const moviesChildren: any = useAppSelector((state) => state.movieBrowse.children);
-  const moviesComedy: any = useAppSelector((state) => state.movieBrowse.comedies);
-  const moviesTops: any = useAppSelector((state) => state.movieBrowse.top);
+  const moviesPopular: any = useAppSelector((state) => state.movieHome.popular);
+  const moviesTheatres: any = useAppSelector((state) => state.movieHome.theatres);
+  const moviesChildren: any = useAppSelector((state) => state.movieHome.children);
+  const moviesComedy: any = useAppSelector((state) => state.movieHome.comedies);
+  const moviesTops: any = useAppSelector((state) => state.movieHome.top);
 
-  const movie: any = useAppSelector((state) => state.movieBrowse.movieRender);
-  console.log(movie);
+  const movie: any = useAppSelector((state) => state.movieHome.movieRender);
+
   
 
   useEffect(() => {
-    dispatch(getPopular());
-    dispatch(getTheatres());
-    dispatch(getChildren());
-    dispatch(getComedy());
-    dispatch(getTop());
-    dispatch(getMovieRandom());
+    dispatch(fetchPopular());
+    // dispatch(getTheatres());
+    // dispatch(getChildren());
+    // dispatch(getComedy());
+    // dispatch(getTop());
+    // dispatch(getMovieRandom());
   }, []);
 
   return (

@@ -1,4 +1,5 @@
 import { Dispatch } from "redux";
+
 import {
   setPopular,
   setTheatres,
@@ -6,7 +7,10 @@ import {
   setComedies,
   setTops,
   setMovieRender,
-} from "../slices/moviesBrowsSlice";
+} from "../slices/movieHomeSlice";
+import { getPopular } from "../../services/moviesHome";
+import { transformMovieData } from "../../utils/movieUtils";
+import { MovieData } from "../../types/types";
 
 interface PopularLoadedAction {
   type: string;
@@ -16,20 +20,14 @@ interface PopularLoadedAction {
 const env = import.meta.env.VITE_API_KEY;
 
 // popular
-export const getPopular = () => {
-  return async (dispatch: Dispatch<PopularLoadedAction>) => {
-    const api = `https://api.themoviedb.org/3/discover/movie?api_key=${env}&sort_by=popularity.desc`;
+export const fetchPopular = () => {
+  return async (dispatch: Dispatch) => {
     try {
-      const res = await fetch(api).then((response) => {
-        if (!response.ok) {
-          throw new Error("error");
-        }
-        return response.json();
-      });
-
-      dispatch(setPopular(res.results));
+      const data = await getPopular();
+      const transformedData: MovieData[] = transformMovieData(data);
+      dispatch(setPopular(transformedData));
     } catch (error) {
-      console.log(error);
+      console.log("Error in fetchPopular thunk", error);
     }
   };
 };
@@ -87,8 +85,7 @@ export const getTop = () => {
       if (!response.ok) {
         throw new Error("error");
       }
-      
-      
+
       return response.json();
     });
 
@@ -104,7 +101,7 @@ export const getMovieRandom = () => {
     fetch(API)
       .then((resolve) => resolve.json())
       .then((data) => {
-        const res = data.results.filter((item:any) => {
+        const res = data.results.filter((item: any) => {
           if (item.backdrop_path !== null) {
             return item;
           }
