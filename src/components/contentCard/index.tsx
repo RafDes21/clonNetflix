@@ -1,18 +1,16 @@
 import React from "react";
-import { ContentSectionProps } from "../../types/types";
+import { ContentMovieChildren } from "../../types/types";
 import styles from "./styles.module.css";
-import { useAppSelector } from "../../store/hook/hook";
 import { ListCards } from "./components";
 
-const ContentCard: React.FC<ContentSectionProps> = ({ children }) => {
-    const popularMovies = useAppSelector((state)=>state.movieHome.popular)
-    console.log(popularMovies);
-    
+const ContentCard: React.FC<ContentMovieChildren> = ({ children, movies, title }) => {
+
   return (
     <div className={styles.container}>
       <div className={styles.contenCard}>
+        <h2 className={styles.cardTitle}>{title}</h2>
         <div className={styles.containerCardsMobile}>
-            <ListCards movies={popularMovies}/>
+          <ListCards movies={movies} />
         </div>
         {children}
       </div>

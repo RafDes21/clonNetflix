@@ -9,6 +9,12 @@ export type HeaderProps = {
 export interface ContentSectionProps {
   children: ReactNode;
 }
+
+export interface ContentMovieChildren {
+  children: ReactNode;
+  movies: MovieData[];
+  title:string
+}
 export interface DataApi {
   title: string;
   poster_path: string;
@@ -28,7 +34,7 @@ export interface MovieData {
 }
 export interface MovieHomeState {
   popular: MovieData[];
-  theatres: string[];
+  teather: MovieData[];
   children: string[];
   comedies: string[];
   top: string[];
@@ -44,5 +50,5 @@ export interface ListCardsProps {
 export interface ItemCardProps {
   id: string;
   image: string;
-  title:string;
+  title: string;
 }

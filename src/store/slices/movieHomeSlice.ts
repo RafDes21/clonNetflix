@@ -3,7 +3,7 @@ import { MovieData, MovieHomeState } from "../../types/types";
 
 const initialState: MovieHomeState = {
   popular: [],
-  theatres: [],
+  teather: [],
   children: [],
   comedies: [],
   top: [],
@@ -18,8 +18,8 @@ const movieHomeSlice = createSlice({
     setPopular: (state, actions: PayloadAction<MovieData[]>) => {
       state.popular = actions.payload;
     },
-    setTheatres: (state, actions) => {
-      state.theatres = actions.payload;
+    setTeather: (state, actions:PayloadAction<MovieData[]>) => {
+      state.teather = actions.payload;
     },
     setChildren: (state, actions) => {
       state.children = actions.payload;
@@ -38,7 +38,7 @@ const movieHomeSlice = createSlice({
 
 export const {
   setPopular,
-  setTheatres,
+  setTeather,
   setChildren,
   setComedies,
   setTops,

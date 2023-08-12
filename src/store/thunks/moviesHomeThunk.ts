@@ -2,13 +2,13 @@ import { Dispatch } from "redux";
 
 import {
   setPopular,
-  setTheatres,
+  setTeather,
   setChildren,
   setComedies,
   setTops,
   setMovieRender,
 } from "../slices/movieHomeSlice";
-import { getPopular } from "../../services/moviesHome";
+import { getPopular, getTheater } from "../../services/moviesHome";
 import { transformMovieData } from "../../utils/movieUtils";
 import { MovieData } from "../../types/types";
 
@@ -23,6 +23,18 @@ export const fetchPopular = () => {
       dispatch(setPopular(transformedData));
     } catch (error) {
       console.log("Error in fetchPopular thunk", error);
+    }
+  };
+};
+
+export const fetchTeather = () => {
+  return async (dispatch: Dispatch) => {
+    try {
+      const data = await getTheater();
+      const transformedData: MovieData[] = transformMovieData(data);
+      dispatch(setTeather(transformedData));
+    } catch (error) {
+      console.log("Error in fetchTheater thunk", error);
     }
   };
 };
