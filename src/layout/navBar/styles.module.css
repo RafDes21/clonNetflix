@@ -19,17 +19,17 @@
   align-items: center;
   height: 100%;
   max-width: 1440px;
-  padding: 0 20px;
+  padding: 0 10px;
 }
 .menuBurger {
-  font-size: 25px;
+  font-size: 20px;
   color: var(--primary);
   z-index: 90;
   position: sticky;
 }
 .logo {
-  width: 70px;
-  height: 70%;
+  width: 60px;
+  height: 60%;
 }
 /* .hiddenLink {
   display: flex;
@@ -89,7 +89,18 @@
 .showPerfilTablet {
   display: none;
 }
-@media (min-width: 425px) {}
+@media (min-width: 425px) {
+  .menuBurger {
+    font-size: 25px;
+  }
+  .logo {
+    width: 70px;
+    height: 70%;
+  }
+  .navHeader {
+    padding: 0 20px;
+  }
+}
 @media (min-width: 768px) {
   .nav {
     height: 80px;
