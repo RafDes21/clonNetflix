@@ -38,3 +38,11 @@ export interface RandomMovie {
   poster: string;
   image: string;
 }
+export interface ListCardsProps {
+  movies: MovieData[];
+}
+export interface ItemCardProps {
+  id: string;
+  image: string;
+  title:string;
+}

@@ -1,6 +1,9 @@
 .showIsNotMobile {
   display: none;
 }
+.cardNotMobile{
+  display: none;
+}
 
 @media (min-width: 768px) {
   .showIsNotMobile {

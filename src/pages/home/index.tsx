@@ -8,10 +8,16 @@ import {
   // getTop,
   // getMovieRandom,
 } from "../../store/thunks/moviesHomeThunk";
-import { ContainSlider, ContentSection, Header } from "../../components";
+import {
+  ContainSlider,
+  ContentCard,
+  ContentSection,
+  Header,
+} from "../../components";
 import styles from "./styles.module.css";
 import { MovieData } from "../../types/types";
 import { getRandomPoster } from "../../utils/getRandomPoster";
+import { getTheater } from "../../services/moviesHome";
 
 const Home = () => {
   const dispatch = useAppDispatch();
@@ -41,6 +47,7 @@ const Home = () => {
 
   useEffect(() => {
     dispatch(fetchPopular());
+    getTheater();
     // dispatch(getTheatres());
     // dispatch(getChildren());
     // dispatch(getComedy());
@@ -59,6 +66,9 @@ const Home = () => {
           />
         </div>
       </ContentSection>
+      <ContentCard>
+        <h1 className={styles.cardNotMobile}>hola</h1>
+      </ContentCard>
     </div>
   );
 };
