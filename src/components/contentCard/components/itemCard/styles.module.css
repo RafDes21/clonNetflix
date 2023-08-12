@@ -2,3 +2,10 @@
   width: 150px;
   border-radius: 5px;
 }
+
+.loading{
+  width: 100px;
+  height: 100px;
+  background-color: aliceblue;
+  border: 1px solid green;
+}

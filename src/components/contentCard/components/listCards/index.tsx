@@ -5,8 +5,8 @@ import styles from "./styles.module.css";
 
 const ListCards: React.FC<ListCardsProps> = ({ movies }) => {
   const renderMovies = () => {
-    return movies.map((movie) => (
-      <ItemCard id={movie.id} image={movie.poster} title={movie.title} />
+    return movies.map((movie, index) => (
+      <ItemCard key={index} id={movie.id} image={movie.poster} title={movie.title} />
     ));
   };
 
