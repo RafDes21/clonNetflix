@@ -6,13 +6,10 @@ import {
   setChildren,
   setComedies,
   setTops,
-  setMovieRender,
 } from "../slices/movieHomeSlice";
-import { getPopular, getTheater } from "../../services/moviesHome";
+import { getChildren, getPopular, getTheater } from "../../services/moviesHome";
 import { transformMovieData } from "../../utils/movieUtils";
 import { MovieData } from "../../types/types";
-
-
 
 // popular
 export const fetchPopular = () => {
@@ -39,35 +36,19 @@ export const fetchTeather = () => {
   };
 };
 
-// theatres
-// export const getTheatres = () => {
-//   return async (dispatch: Dispatch<PopularLoadedAction>) => {
-//     const api = `https://api.themoviedb.org/3/discover/movie?api_key=${env}&primary_release_date.gte=2014-09-15&primary_release_date.lte=2014-10-22`;
+export const fetchChildren = () => {
+  return async (dispatch: Dispatch) => {
+    try {
+      const data = await getChildren();
+      const transformedData: MovieData[] = transformMovieData(data);
+      dispatch(setChildren(transformedData));
+    } catch (error) {
+      console.log("Error in fetchChildren thunk", error);
+    }
+  };
+};
 
-//     const res = await fetch(api).then((response) => {
-//       if (!response.ok) {
-//         throw new Error("error");
-//       }
-//       return response.json();
-//     });
-//     dispatch(setTheatres(res.results));
-//   };
-// };
 
-// children
-// export const getChildren = () => {
-//   return async (dispatch: Dispatch<PopularLoadedAction>) => {
-//     const api = `https://api.themoviedb.org/3/discover/movie?api_key=${env}&certification_country=US&certification.lte=G&sort_by=popularity.desc`;
-
-//     const res = await fetch(api).then((response) => {
-//       if (!response.ok) {
-//         throw new Error("error");
-//       }
-//       return response.json();
-//     });
-//     dispatch(setChildren(res.results));
-//   };
-// };
 
 // comedies
 // export const getComedy = () => {
@@ -100,20 +81,3 @@ export const fetchTeather = () => {
 //   };
 // };
 
-// movie random for header component
-// export const getMovieRandom = () => {
-//   return (dispatch: Dispatch<PopularLoadedAction>) => {
-//     const random_number = Math.floor(Math.random() * 19) + 1;
-//     const API = `https://api.themoviedb.org/3/discover/movie?api_key=${env}&sort_by=popularity.desc`;
-//     fetch(API)
-//       .then((resolve) => resolve.json())
-//       .then((data) => {
-//         const res = data.results.filter((item: any) => {
-//           if (item.backdrop_path !== null) {
-//             return item;
-//           }
-//         });
-//         dispatch(setMovieRender(res[random_number]));
-//       });
-//   };
-// };

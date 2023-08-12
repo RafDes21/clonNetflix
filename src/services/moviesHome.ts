@@ -21,3 +21,14 @@ export const getTheater = async () => {
     console.log("Error getting theater movies", error);
   }
 };
+
+export const getChildren = async () => {
+  try {
+    const API = `https://api.themoviedb.org/3/discover/movie?api_key=${key}&certification_country=US&certification.lte=G&sort_by=popularity.desc`;
+    const response = await fetch(API);
+    const data = await response.json();
+    return data.results;
+  } catch (error) {
+    console.log("Error getting theater movies", error);
+  }
+};

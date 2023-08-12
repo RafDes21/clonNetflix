@@ -35,10 +35,9 @@ export interface MovieData {
 export interface MovieHomeState {
   popular: MovieData[];
   teather: MovieData[];
-  children: string[];
-  comedies: string[];
-  top: string[];
-  movieRender: {};
+  children: MovieData[];
+  comedies: MovieData[];
+  top: MovieData[];
 }
 export interface RandomMovie {
   poster: string;
