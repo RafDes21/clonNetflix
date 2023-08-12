@@ -1,8 +1,8 @@
 import React from "react";
 import { ContentSectionProps } from "../../types/types";
 import styles from "./styles.module.css";
-import ListCards from "./components/listCards/ListCards";
 import { useAppSelector } from "../../store/hook/hook";
+import { ListCards } from "./components";
 
 const ContentCard: React.FC<ContentSectionProps> = ({ children }) => {
     const popularMovies = useAppSelector((state)=>state.movieHome.popular)
