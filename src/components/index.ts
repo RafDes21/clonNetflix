@@ -5,3 +5,4 @@ export { default as CardFilter } from "./cardFilter";
 export { default as Perfil } from "./perfil";
 export {default as ContentSection} from "./contentSection";
 export {default as ContentCard} from "./contentCard"
+export {default as ContenCardNotMobile} from "./contentCardNotMobile"

@@ -1,4 +1,8 @@
-import { ContentCard, ContentSection } from "../../components";
+import {
+  ContenCardNotMobile,
+  ContentCard,
+  ContentSection,
+} from "../../components";
 import styles from "./styles.module.css";
 import { useMoviesHome } from "../../hooks/useMoviesHome";
 
@@ -23,20 +27,23 @@ const Home = () => {
           />
         </div>
       </ContentSection>
-      <ContentCard title={"Popular"} movies={moviesPopular}>
-        <h1 className={styles.cardNotMobile}>hola</h1>
+      <ContentCard title={"Popular"} movies={moviesPopular} isMobile={true}>
+        <ContenCardNotMobile />
       </ContentCard>
-      <ContentCard title={"Theater"} movies={moviesTeather}>
-        <h1 className={styles.cardNotMobile}>hola</h1>
+      <ContentCard title={"Theater"} movies={moviesTeather} isMobile={true}>
+        <ContenCardNotMobile />
       </ContentCard>
-      <ContentCard title={"Comedies"} movies={moviesComedy}>
-        <h1 className={styles.cardNotMobile}>hola</h1>
+      <ContentCard title={"Comedies"} movies={moviesComedy} isMobile={true}>
+        <ContenCardNotMobile />
       </ContentCard>
-      <ContentCard title={"Top"} movies={moviesTops}>
-        <h1 className={styles.cardNotMobile}>hola</h1>
+      <ContentCard title={"Top"} movies={moviesTops} isMobile={true}>
+        <ContenCardNotMobile />
       </ContentCard>
-      <ContentCard title={"Children"} movies={moviesChildren}>
-        <h1 className={styles.cardNotMobile}>hola</h1>
+      <ContentCard title={"Children"} movies={moviesChildren} isMobile={true}>
+        <ContenCardNotMobile />
+      </ContentCard>
+      <ContentCard title={"Children"} movies={moviesChildren} isMobile={false}>
+        <ContenCardNotMobile />
       </ContentCard>
     </div>
   );

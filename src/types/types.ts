@@ -13,7 +13,8 @@ export interface ContentSectionProps {
 export interface ContentMovieChildren {
   children: ReactNode;
   movies: MovieData[];
-  title:string
+  title:string;
+  isMobile:boolean
 }
 export interface DataApi {
   title: string;
@@ -45,6 +46,7 @@ export interface RandomMovie {
 }
 export interface ListCardsProps {
   movies: MovieData[];
+  isMobile:boolean
 }
 export interface ItemCardProps {
   id: string;

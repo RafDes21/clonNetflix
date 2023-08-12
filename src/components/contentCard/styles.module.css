@@ -2,3 +2,9 @@
     color: var(--primary);
     margin: 20px 10px 10px 10px;
 }
+
+/* @media (min-width:768px){
+    .containerCardsMobile{
+        display: none;
+    }
+} */

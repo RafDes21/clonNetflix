@@ -3,10 +3,10 @@ import { ListCardsProps } from "../../../../types/types";
 import ItemCard from "../itemCard";
 import styles from "./styles.module.css";
 
-const ListCards: React.FC<ListCardsProps> = ({ movies }) => {
+const ListCards: React.FC<ListCardsProps> = ({ movies, isMobile }) => {
   const renderMovies = () => {
     return movies.map((movie, index) => (
-      <ItemCard key={index} id={movie.id} image={movie.poster} title={movie.title} />
+      <ItemCard key={index} id={movie.id} image={isMobile? movie.poster: movie.image} title={movie.title} />
     ));
   };
 
