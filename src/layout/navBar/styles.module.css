@@ -70,6 +70,7 @@
   text-decoration: none;
   color: var(--primary);
   font-size: var(--font-subtitle-mobile);
+  cursor: pointer;
 }
 
 /* .containerLink li {
@@ -88,9 +89,14 @@
 .showPerfilTablet {
   display: none;
 }
+@media (min-width: 425px) {}
 @media (min-width: 768px) {
   .nav {
-    height: 70px;
+    height: 80px;
+  }
+  .logo {
+    width: 100px;
+    height: 100%;
   }
   .menuBurger {
     display: none;
@@ -99,8 +105,8 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 40px;
-    border: 2px solid red;
+    gap: 20px;
+    
   }
   .showPerfil {
     display: none;
@@ -117,16 +123,39 @@
     padding-left: none;
     display: flex;
     justify-content: flex-end;
+    gap: 15px;
   }
   .menuList.active {
     transform: translateX(0);
   }
+  .link {
+    font-size: var(--font-paragraph-tablet);
+  }
   .perfilSearch{
     display: flex;
-    gap: 10px;
+    gap: 7px;
   }
   .showPerfilTablet{
     display: block;
+  }
+}
+@media (min-width: 1024px) {
+  .nav {
+    height: 80px;
+  }
+  .navHeader {
+    padding: 0 20px;
+    margin: 0 auto;
+  }
+  .logo {
+    width: 120px;
+    height: 120%;
+  }
+  .perfilSearch{
+    gap: 10px;
+  }
+  .link {
+    font-size: var(--font-paragraph-desktop);
   }
 }
 /* .nav {

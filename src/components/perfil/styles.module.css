@@ -7,8 +7,21 @@
   height: 50px;
   border-radius: 5px;
 }
-
 .perfilShow {
   color: var(--primary);
-  font-size: 25px;
+  font-size: 20px;
 }
+
+@media (min-width: 425) {
+  .perfilShow {
+    font-size: 25px;
+  }
+}
+@media (min-width: 1024px) {
+    .perfilAvatar {
+        height: 60px;
+      }
+    .perfilShow {
+      font-size: 30px;
+    }
+  }
