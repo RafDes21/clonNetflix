@@ -2,18 +2,19 @@ import React, { useRef, useState } from "react";
 import { ListCardsProps } from "../../../../types/types";
 import ItemCard from "../itemCard";
 import styles from "./styles.module.css";
+import { useAppSelector } from "../../../../store/hook/hook";
 
 const ListCards: React.FC<ListCardsProps> = ({ movies, isMobile }) => {
-  if (movies.length > 0) {
-    console.log("cargo");
-    
-  }else{
-    console.log("esta cargando");
-    
-  }
+  const isLoading = useAppSelector((state) => state.movieHome.loading);
+
   const renderMovies = () => {
     return movies.map((movie, index) => (
-      <ItemCard key={index} id={movie.id} image={isMobile? movie.poster: movie.image} title={movie.title}/>
+      <ItemCard
+        key={index}
+        id={movie.id}
+        image={isMobile ? movie.poster : movie.image}
+        title={movie.title}
+      />
     ));
   };
 

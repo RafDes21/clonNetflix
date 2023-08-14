@@ -30,17 +30,17 @@ const Home = () => {
         </div>
       </ContentSection>
       <ContentCard title={"Popular"} movies={moviesPopular} isMobile={isMobile} />
-      
       <ContentCard title={"Theater"} movies={moviesTeather} isMobile={isMobile} />
-   
       <ContentCard title={"Comedies"} movies={moviesComedy} isMobile={isMobile} />
-     
       <ContentCard title={"Top"} movies={moviesTops} isMobile={isMobile} />
-    
       <ContentCard title={"Children"} movies={moviesChildren} isMobile={isMobile} />
-      
     </div>
   );
 };
 
 export default Home;
+      
+   
+     
+      
+    

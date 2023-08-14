@@ -1,15 +1,13 @@
 import React from "react";
 import { ContentMovieChildren } from "../../types/types";
 import styles from "./styles.module.css";
-import { ListCards } from "./components";
-import { useAppSelector } from "../../store/hook/hook";
+import { ListCards} from "./components";
 
 const ContentCard: React.FC<ContentMovieChildren> = ({
   movies,
   title,
   isMobile,
 }) => {
-  const isLoading = useAppSelector((state) => state.movieHome.loading);
 
   return (
     <div className={styles.container}>
