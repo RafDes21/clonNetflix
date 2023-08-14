@@ -26,11 +26,7 @@ const Series = () => {
           />
         </div>
       </ContentSection>
-      <ContentCard
-        title={"Comedies"}
-        movies={seriesComedies}
-        isMobile={isMobile}
-      />
+      <ContentCard title={"Comedies"} movies={seriesComedies} isMobile={isMobile}/>
       <ContentCard title={"Crimen"} movies={seriesCrime} isMobile={isMobile} />
       <ContentCard title={"Family"} movies={seriesFamily} isMobile={isMobile} />
       <ContentCard title={"Kids"} movies={seriesKids} isMobile={isMobile} />
