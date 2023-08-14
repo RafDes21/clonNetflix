@@ -7,6 +7,7 @@ const initialState: MovieHomeState = {
   children: [],
   comedies: [],
   top: [],
+  loading:false
 };
 
 const movieHomeSlice = createSlice({
@@ -29,9 +30,12 @@ const movieHomeSlice = createSlice({
     setTops: (state, actions: PayloadAction<MovieData[]>) => {
       state.top = actions.payload;
     },
+    setLoading: (state, action) => {
+      state.loading = action.payload;
+    },
   },
 });
 
-export const { setPopular, setTeather, setChildren, setComedies, setTops } =
+export const { setPopular, setTeather, setChildren, setComedies, setTops, setLoading } =
   movieHomeSlice.actions;
 export default movieHomeSlice.reducer;

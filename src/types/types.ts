@@ -38,6 +38,7 @@ export interface MovieHomeState {
   children: MovieData[];
   comedies: MovieData[];
   top: MovieData[];
+  loading:boolean
 }
 export interface RandomMovie {
   poster: string;
