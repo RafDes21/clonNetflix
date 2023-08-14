@@ -19,6 +19,7 @@ export const useMoviesHome = () => {
   const moviesTops = useAppSelector((state) => state.movieHome.top);
 
   const [isLoading, setIsLoading] = useState(true);
+
   const [randomPoster, setRandomPoster] = useState("");
 
   useEffect(() => {
@@ -36,13 +37,13 @@ export const useMoviesHome = () => {
     dispatch(fetchComedy());
     dispatch(fetchTop());
   }, []);
-  return{
+  return {
     moviesChildren,
     moviesComedy,
     moviesPopular,
     moviesTeather,
     moviesTops,
     randomPoster,
-    isLoading
-  }
+    isLoading,
+  };
 };

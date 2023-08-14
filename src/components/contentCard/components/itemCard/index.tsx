@@ -1,12 +1,11 @@
-import React from 'react';
-import { ItemCardProps } from '../../../../types/types';
-import styles from "./styles.module.css"
+import React from "react";
+import { ItemCardProps } from "../../../../types/types";
+import styles from "./styles.module.css";
 
 const ItemCard: React.FC<ItemCardProps> = ({ id, image, title }) => {
- 
   return (
     <div className={styles.card}>
-      <img src={`https://image.tmdb.org/t/p/original${image}`} alt={title}/>
+      <img src={`https://image.tmdb.org/t/p/original${image}`} alt={title} />
     </div>
   );
 };

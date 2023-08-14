@@ -13,7 +13,7 @@ const ContentCard: React.FC<ContentMovieChildren> = ({
       <div className={styles.contenCard}>
         <h2 className={styles.cardTitle}>{title}</h2>
         <div className={styles.containerCardsMobile}>
-          <ListCards movies={movies} isMobile={isMobile} />
+          <ListCards movies={movies} isMobile={isMobile}/>
         </div>
       </div>
     </div>
