@@ -11,7 +11,6 @@ export interface ContentSectionProps {
 }
 
 export interface ContentMovieChildren {
-  children: ReactNode;
   movies: MovieData[];
   title:string;
   isMobile:boolean
