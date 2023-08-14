@@ -40,6 +40,21 @@ export interface MovieHomeState {
   top: MovieData[];
   loading:boolean
 }
+
+export interface MovieSeriesState {
+  news: MovieData[];
+  crime: MovieData[];
+  family: MovieData[];
+  kids: MovieData[];
+  comedies: MovieData[];
+  setCategories: Categorie[]
+}
+
+export interface Categorie{
+  id:number;
+  name:string
+}
+
 export interface RandomMovie {
   poster: string;
   image: string;

@@ -5,106 +5,50 @@ import {
   setFamily,
   setKids,
   setComedies,
-  setCategories,
-  setSerRender,
 } from "../slices/series";
+import { fetchSeriesByGenre, getCagories } from "../../services/series";
+import { setCategories } from "../slices/movieSlice";
+import { transformMovieData } from "../../utils/movieUtils";
+import { MovieData } from "../../types/types";
 
-interface SeriesLoadedAction {
-  type: string;
-  payload: Object[];
-}
+export const fetchCategories = () => {
+  return async (dispatch: Dispatch) => {
+    const result = await getCagories();
 
-const env = import.meta.env.VITE_API_KEY;
-
-export const getSeriesCategories = () => {
-  return async (dispatch: Dispatch<SeriesLoadedAction>) => {
-    const API = `https://api.themoviedb.org/3/genre/tv/list?api_key=${env}&language=en-US`;
-    const result = await fetch(API).then((response) => {
-      if (!response.ok) {
-        throw new Error("error");
-      } else {
-        return response.json();
-      }
-    });
-
-    dispatch(setCategories(result.genres));
+    dispatch(setCategories(result));
   };
 };
 
 export const getForIdCategory = (id: number, nameCategory: string) => {
-  return async (dispatch: Dispatch<SeriesLoadedAction>) => {
-    if (nameCategory === "News") {
-      const API = `https://api.themoviedb.org/3/discover/tv?api_key=${env}&page=1&with_genres=${id}&sort_by=popularity.desc`;
-      const result = await fetch(API).then((response) => {
-        if (!response.ok) {
-          throw new Error("error");
-        } else {
-          return response.json();
-        }
-      });
-      dispatch(setNews(result.results));
-    }
-    if (nameCategory === "Crime") {
-      const API = `https://api.themoviedb.org/3/discover/tv?api_key=${env}&page=1&with_genres=${id}&sort_by=popularity.desc`;
-      const result = await fetch(API).then((response) => {
-        if (!response.ok) {
-          throw new Error("error");
-        } else {
-          return response.json();
-        }
-      });
-      dispatch(setCrime(result.results));
-    }
-    if (nameCategory === "Family") {
-      const API = `https://api.themoviedb.org/3/discover/tv?api_key=${env}&page=3&with_genres=${id}&sort_by=popularity.desc`;
-      const result = await fetch(API).then((response) => {
-        if (!response.ok) {
-          throw new Error("error");
-        } else {
-          return response.json();
-        }
-      });
-      dispatch(setFamily(result.results));
-    }
-    if (nameCategory === "Kids") {
-      const API = `https://api.themoviedb.org/3/discover/tv?api_key=${env}&page=1&with_genres=${id}&sort_by=popularity.desc`;
-      const result = await fetch(API).then((response) => {
-        if (!response.ok) {
-          throw new Error("error");
-        } else {
-          return response.json();
-        }
-      });
-      dispatch(setKids(result.results));
-    }
-    if (nameCategory === "Comedy") {
-      const API = `https://api.themoviedb.org/3/discover/tv?api_key=${env}&page=1&with_genres=${id}&sort_by=popularity.desc`;
-      const result = await fetch(API).then((response) => {
-        if (!response.ok) {
-          throw new Error("error");
-        } else {
-          return response.json();
-        }
-      });
-      dispatch(setComedies(result.results));
+  return async (dispatch: Dispatch) => {
+    try {
+      let page = 1;
+      let sort = "popularity.desc";
+
+      if (nameCategory === "Family") {
+        page = 3;
+      }
+
+      const data = await fetchSeriesByGenre(id, page, sort);
+      const transformedData: MovieData[] = transformMovieData(data);
+
+      if (nameCategory === "News") {
+        dispatch(setNews(transformedData));
+      }
+      if (nameCategory === "Crime") {
+        dispatch(setCrime(transformedData));
+      }
+      if (nameCategory === "Family") {
+        dispatch(setFamily(transformedData));
+      }
+      if (nameCategory === "Kids") {
+        dispatch(setKids(transformedData));
+      }
+      if (nameCategory === "Comedy") {
+        dispatch(setComedies(transformedData));
+      }
+    } catch (error) {
+      // Manejar errores aquí
     }
   };
 };
-
-// export const getSeriesRandom = () => {
-//   return async (dispatch: Dispatch<SeriesLoadedAction>) => {
-//     const random_number = Math.floor(Math.random() * 20) + 1;
-//     const idRandom = 16;
-//     const API = `https://api.themoviedb.org/3/discover/tv?api_key=${env}&page=1&with_genres=${idRandom}&sort_by=popularity.desc`;
-//     fetch(API)
-//       .then((resolve) => resolve.json())
-//       .then((data) => {
-//         const res = data.results.filter((item: any) => {
-//           if (item.backdrop_path !== null || undefined) {
-//             return item;
-//           }
-//         });
-//         dispatch(setSerRender(res[random_number]));
-//       });
-//   };
-// };

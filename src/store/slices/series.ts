@@ -1,23 +1,13 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { Categorie, MovieData, MovieSeriesState } from "../../types/types";
 
-interface movieState {
-  news: string[];
-  crime: string[];
-  family: string[];
-  kids: string[];
-  comedies: string[];
-  serCategories: string[];
-  serRender: {};
-}
-
-const initialState: movieState = {
+const initialState: MovieSeriesState = {
   news: [],
   crime: [],
   family: [],
   kids: [],
   comedies: [],
-  serCategories: [],
-  serRender: {},
+  setCategories: [],
 };
 
 const seriesSlice = createSlice({
@@ -25,26 +15,23 @@ const seriesSlice = createSlice({
   initialState,
 
   reducers: {
-    setNews: (state, actions) => {
+    setNews: (state, actions: PayloadAction<MovieData[]>) => {
       state.news = actions.payload;
     },
-    setCrime: (state, actions) => {
+    setCrime: (state, actions: PayloadAction<MovieData[]>) => {
       state.crime = actions.payload;
     },
-    setFamily: (state, actions) => {
+    setFamily: (state, actions: PayloadAction<MovieData[]>) => {
       state.family = actions.payload;
     },
-    setKids: (state, actions) => {
+    setKids: (state, actions: PayloadAction<MovieData[]>) => {
       state.kids = actions.payload;
     },
-    setComedies: (state, actions) => {
+    setComedies: (state, actions: PayloadAction<MovieData[]>) => {
       state.comedies = actions.payload;
     },
-    setCategories: (state, action) => {
-      state.serCategories = action.payload;
-    },
-    setSerRender: (state, action) => {
-      state.serRender = action.payload;
+    setCategories: (state, action: PayloadAction<Categorie[]>) => {
+      state.setCategories = action.payload;
     },
   },
 });
@@ -56,6 +43,5 @@ export const {
   setKids,
   setComedies,
   setCategories,
-  setSerRender,
 } = seriesSlice.actions;
 export default seriesSlice.reducer;

@@ -1,59 +1,40 @@
-import { useEffect } from "react";
-import { useAppDispatch, useAppSelector } from "../../store/hook/hook";
-import {
-  getForIdCategory,
-  getSeriesCategories,
-  // getSeriesRandom,
-} from "../../store/thunks/seriesThunk";
 import styles from "./styles.module.css";
-import { ContainSlider, Header } from "../../components";
+import { ContentCard, ContentSection } from "../../components";
+import { useSeries } from "../../hooks/useSeries";
+import useWindowWidth from "../../hooks/useWindowWidth";
 
 const Series = () => {
-  const dispatch = useAppDispatch();
-  const seriesForIdAndName: any = useAppSelector(
-    (state) => state.series.serCategories
-  );
+  const {
+    seriesNew,
+    seriesComedies,
+    seriesFamily,
+    seriesKids,
+    seriesCrime,
+    randomPoster,
+  } = useSeries();
 
-  const seriesOneRender: any = useAppSelector(
-    (state) => state.series.serRender
-  );
-  const seriesNew: any = useAppSelector((state) => state.series.news);
-  const seriesComedies: any = useAppSelector((state) => state.series.comedies);
-  const seriesFamily: any = useAppSelector((state) => state.series.family);
-  const seriesKids: any = useAppSelector((state) => state.series.kids);
-  const seriesCrime: any = useAppSelector((state) => state.series.crime);
-
-  useEffect(() => {
-    dispatch(getSeriesCategories());
-    // dispatch(getSeriesRandom());
-  }, []);
-
-  useEffect(() => {
-    seriesForIdAndName.map((state: any) =>
-      dispatch(getForIdCategory(state.id, state.name))
-    );
-  }, [seriesForIdAndName]);
+  const isMobile = useWindowWidth();
 
   return (
-    <div>
-      {seriesOneRender.backdrop_path ? 
-        <>
-          <Header
-            image={`https://image.tmdb.org/t/p/original${seriesOneRender.backdrop_path}`}
-            title={seriesOneRender.original_name}
-            description={seriesOneRender.overview}
+    <div className={styles.home}>
+      <ContentSection>
+        <div className={styles.showIsNotMobile}>
+          <img
+            className={styles.contentSectionImage}
+            src={`https://image.tmdb.org/t/p/original${randomPoster}`}
+            alt="Random Poster"
           />
-          <div className={styles.contentMain}>
-            <ContainSlider title="New" arrayList={seriesNew} />
-            <ContainSlider title="Comedies" arrayList={seriesComedies} />
-            <ContainSlider title="Family" arrayList={seriesFamily} />
-            <ContainSlider title="Kids" arrayList={seriesKids} />
-            <ContainSlider title="Crime" arrayList={seriesCrime} />
-          </div>
-        </>
-      : 
-        <h1 className={styles.loading}>loading</h1>
-      }
+        </div>
+      </ContentSection>
+      <ContentCard
+        title={"Comedies"}
+        movies={seriesComedies}
+        isMobile={isMobile}
+      />
+      <ContentCard title={"Crimen"} movies={seriesCrime} isMobile={isMobile} />
+      <ContentCard title={"Family"} movies={seriesFamily} isMobile={isMobile} />
+      <ContentCard title={"Kids"} movies={seriesKids} isMobile={isMobile} />
+      <ContentCard title={"New"} movies={seriesNew} isMobile={isMobile} />
     </div>
   );
 };
