@@ -17,8 +17,12 @@ export const fetchSeriesByGenre = async (
 };
 
 export const getCagories = async () => {
-  const API = `https://api.themoviedb.org/3/genre/tv/list?api_key=${KEY}&language=en-US`;
-  const response = await fetch(API);
-  const result = await response.json();
-  return result.genres;
+  try {
+    const API = `https://api.themoviedb.org/3/genre/tv/list?api_key=${KEY}&language=en-US`;
+    const response = await fetch(API);
+    const result = await response.json();
+    return result.genres;
+  } catch (error) {
+    console.log(error);
+  }
 };
