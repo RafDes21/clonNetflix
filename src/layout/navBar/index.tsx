@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { IMAGE } from "../../constants";
 import { GiHamburgerMenu } from "react-icons/gi";
@@ -6,11 +6,19 @@ import styles from "./styles.module.css";
 import Search from "../../components/search";
 import useScroll from "../../hooks/useSccroll";
 import { Perfil } from "../../components";
+import useWindowWidth from "../../hooks/useWindowWidth";
 
 const NavBar = () => {
   const scrollY = useScroll();
 
   const [isShowMenu, setIsShowMenu] = useState(false);
+
+  const isMobile = useWindowWidth();
+  useEffect(() => {
+    if (isMobile) {
+      setIsShowMenu(false);
+    }
+  }, [isMobile]); 
 
   const showMenu = () => {
     setIsShowMenu(!isShowMenu);
