@@ -12,8 +12,8 @@ export interface ContentSectionProps {
 
 export interface ContentMovieChildren {
   movies: MovieData[];
-  title:string;
-  isMobile:boolean;
+  title: string;
+  isMobile: boolean;
 }
 export interface DataApi {
   title: string;
@@ -38,7 +38,7 @@ export interface MovieHomeState {
   children: MovieData[];
   comedies: MovieData[];
   top: MovieData[];
-  loading:boolean
+  loading: boolean;
 }
 
 export interface MovieSeriesState {
@@ -47,12 +47,21 @@ export interface MovieSeriesState {
   family: MovieData[];
   kids: MovieData[];
   comedies: MovieData[];
-  setCategories: Categorie[]
+  setCategories: Categorie[];
 }
 
-export interface Categorie{
-  id:number;
-  name:string
+export interface MovieMovieState {
+  action: MovieData[];
+  adventure: MovieData[];
+  family: MovieData[];
+  fantasy: MovieData[];
+  comedies: MovieData[];
+  moviesCategories: Categorie[];
+}
+
+export interface Categorie {
+  id: number;
+  name: string;
 }
 
 export interface RandomMovie {
@@ -61,8 +70,7 @@ export interface RandomMovie {
 }
 export interface ListCardsProps {
   movies: MovieData[];
-  isMobile:boolean;
-  
+  isMobile: boolean;
 }
 export interface ItemCardProps {
   id: string;

@@ -2,10 +2,10 @@ import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../../store/hook/hook";
 import {
   getForIdCategory,
-  getMoviesCategories,
-  getPageMovieRandom,
+  fetchMoviesCategories,
+
 } from "../../store/thunks/moviesThunks";
-import { ContainSlider, Header } from "../../components";
+import { ContentCard, ContentSection } from "../../components";
 import styles from "./styles.module.css";
 
 const Movies = () => {
@@ -15,9 +15,7 @@ const Movies = () => {
     (state) => state.movie.moviesCategories
   );
 
-  const moviesOneRender: any = useAppSelector(
-    (state) => state.movie.moviesPageRender
-  );
+  
   // console.log(moviesOneRender);
 
   const moviesAction: any = useAppSelector((state) => state.movie.action);
@@ -27,8 +25,9 @@ const Movies = () => {
   const movieFantasy: any = useAppSelector((state) => state.movie.fantasy);
 
   useEffect(() => {
-    dispatch(getMoviesCategories());
-    dispatch(getPageMovieRandom());
+    dispatch(fetchMoviesCategories() )
+    // dispatch(getMoviesCategories());
+    
   }, [dispatch]);
 
   useEffect(() => {
@@ -38,26 +37,22 @@ const Movies = () => {
   }, [moviesForIdAndName]);
 
   return (
-    <div>
-      {moviesOneRender.backdrop_path ? (
-        <>
-          <Header
-            image={`https://image.tmdb.org/t/p/original${moviesOneRender.backdrop_path}`}
-            title={moviesOneRender.title}
-            description={moviesOneRender.overview}
-          />
-          <div className={styles.contentMain}>
-            <ContainSlider title="Action" arrayList={moviesAction} />
-            <ContainSlider title="Adventure" arrayList={moviesAdventure} />
-            <ContainSlider title="Comedy" arrayList={moviesComedies} />
-            <ContainSlider title="Family" arrayList={moviesFamily} />
-            <ContainSlider title="Fantasy" arrayList={movieFantasy} />
-          </div>
-        </>
-      ) : (
-        <h1 className={styles.loading}>loading</h1>
-      )}
-    </div>
+    <div className={styles.home}>
+    <ContentSection>
+      <div className={styles.showIsNotMobile}>
+        <img
+          className={styles.contentSectionImage}
+          src={`https://image.tmdb.org/t/p/original${randomPoster}`}
+          alt="Random Poster"
+        />
+      </div>
+    </ContentSection>
+    <ContentCard title={"Comedies"} movies={seriesComedies} isMobile={isMobile}/>
+    <ContentCard title={"Crimen"} movies={seriesCrime} isMobile={isMobile} />
+    <ContentCard title={"Family"} movies={seriesFamily} isMobile={isMobile} />
+    <ContentCard title={"Kids"} movies={seriesKids} isMobile={isMobile} />
+    <ContentCard title={"New"} movies={seriesNew} isMobile={isMobile} />
+  </div>
   );
 };
 

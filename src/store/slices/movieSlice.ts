@@ -1,23 +1,14 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { Categorie, MovieData, MovieMovieState } from "../../types/types";
 
-interface movieState {
-  action: string[];
-  adventure: string[];
-  family: string[];
-  fantasy: string[];
-  comedies: string[];
-  moviesCategories: string[];
-  moviesPageRender: {};
-}
 
-const initialState: movieState = {
+const initialState: MovieMovieState = {
   action: [],
   adventure: [],
   family: [],
   fantasy: [],
   comedies: [],
   moviesCategories: [],
-  moviesPageRender: {},
 };
 
 const movieSlice = createSlice({
@@ -25,26 +16,23 @@ const movieSlice = createSlice({
   initialState,
 
   reducers: {
-    setAction: (state, actions) => {
+    setAction: (state, actions: PayloadAction<MovieData[]>) => {
       state.action = actions.payload;
     },
-    setAdventure: (state, actions) => {
+    setAdventure: (state, actions: PayloadAction<MovieData[]>) => {
       state.adventure = actions.payload;
     },
-    setFamily: (state, actions) => {
+    setFamily: (state, actions: PayloadAction<MovieData[]>) => {
       state.family = actions.payload;
     },
-    setFantasy: (state, actions) => {
+    setFantasy: (state, actions: PayloadAction<MovieData[]>) => {
       state.fantasy = actions.payload;
     },
-    setComedies: (state, actions) => {
+    setComedies: (state, actions: PayloadAction<MovieData[]>) => {
       state.comedies = actions.payload;
     },
-    setCategories: (state, action) => {
+    setCategories: (state, action: PayloadAction<Categorie[]>) => {
       state.moviesCategories = action.payload;
-    },
-    setPageMovieRender: (state, action) => {
-      state.moviesPageRender = action.payload;
     },
   },
 });
@@ -56,6 +44,5 @@ export const {
   setFantasy,
   setComedies,
   setCategories,
-  setPageMovieRender,
 } = movieSlice.actions;
 export default movieSlice.reducer;

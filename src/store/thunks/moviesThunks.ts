@@ -6,8 +6,8 @@ import {
   setFantasy,
   setComedies,
   setCategories,
-  setPageMovieRender,
 } from "../slices/movieSlice";
+import { getMoviesCagories } from "../../services/movies.services";
 
 interface MoviesLoadedAction {
   type: string;
@@ -16,18 +16,10 @@ interface MoviesLoadedAction {
 
 const env = import.meta.env.VITE_API_KEY;
 
-export const getMoviesCategories = () => {
-  return async (dispatch: Dispatch<MoviesLoadedAction>) => {
-    const API = `https://api.themoviedb.org/3/genre/movie/list?api_key=${env}&language=en-US`;
-    const result = await fetch(API).then((response) => {
-      if (!response.ok) {
-        throw new Error("error");
-      } else {
-        return response.json();
-      }
-    });
-
-    dispatch(setCategories(result.genres));
+export const fetchMoviesCategories = () => {
+  return async (dispatch: Dispatch) => {
+    const data = await getMoviesCagories();
+    dispatch(setCategories(data));
   };
 };
 
@@ -67,20 +59,3 @@ export const getForIdCategory = (id: number, nameCategory: string) => {
   };
 };
 
-export const getPageMovieRandom = () => {
-  return async (dispatch: Dispatch<MoviesLoadedAction>) => {
-    const random_number = Math.floor(Math.random() * 19) + 1;
-    const idRandom = 16;
-    const API = `https://api.themoviedb.org/3/discover/movie?api_key=${env}&page=1&with_genres=${idRandom}&sort_by=popularity.desc`;
-    fetch(API)
-      .then((resolve) => resolve.json())
-      .then((data) => {
-        const res = data.results.filter((item: any) => {
-          if (item.backdrop_path !== null || undefined) {
-            return item;
-          }
-        });
-        dispatch(setPageMovieRender(res[random_number]));
-      });
-  };
-};
