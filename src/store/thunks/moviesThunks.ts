@@ -7,14 +7,9 @@ import {
   setComedies,
   setCategories,
 } from "../slices/movieSlice";
-import { getMoviesCagories } from "../../services/movies.services";
-
-interface MoviesLoadedAction {
-  type: string;
-  payload: Object[];
-}
-
-const env = import.meta.env.VITE_API_KEY;
+import { fetchMoviesByGenre, getMoviesCagories } from "../../services/movies.services";
+import { transformMovieData } from "../../utils/movieUtils";
+import { MovieData } from "../../types/types";
 
 export const fetchMoviesCategories = () => {
   return async (dispatch: Dispatch) => {
@@ -24,38 +19,34 @@ export const fetchMoviesCategories = () => {
 };
 
 export const getForIdCategory = (id: number, nameCategory: string) => {
-  return async (dispatch: Dispatch<MoviesLoadedAction>) => {
-    if (nameCategory === "Action") {
-      const API = `https://api.themoviedb.org/3/discover/movie?api_key=${env}&page=2&with_genres=${id}&sort_by=popularity.desc`;
-      await fetch(API)
-        .then((response) => response.json())
-        .then((data) => dispatch(setAction(data.results)));
-    }
-    if (nameCategory === "Adventure") {
-      const API = `https://api.themoviedb.org/3/discover/movie?api_key=${env}&page=5&with_genres=${id}&sort_by=popularity.desc`;
-      await fetch(API)
-        .then((response) => response.json())
-        .then((data) => dispatch(setAdventure(data.results)));
-    }
+  return async (dispatch: Dispatch) => {
+    try {
+      let page = 1;
+      let sort = "popularity.desc";
 
-    if (nameCategory === "Family") {
-      const API = `https://api.themoviedb.org/3/discover/movie?api_key=${env}&page=3&with_genres=${id}&sort_by=popularity.desc`;
-      await fetch(API)
-        .then((response) => response.json())
-        .then((data) => dispatch(setFamily(data.results)));
-    }
-    if (nameCategory === "Fantasy") {
-      const API = `https://api.themoviedb.org/3/discover/movie?api_key=${env}&page=6&with_genres=${id}&sort_by=popularity.desc`;
-      await fetch(API)
-        .then((response) => response.json())
-        .then((data) => dispatch(setFantasy(data.results)));
-    }
-    if (nameCategory === "Comedy") {
-      const API = `https://api.themoviedb.org/3/discover/movie?api_key=${env}&page=1&with_genres=${id}&sort_by=popularity.desc`;
-      await fetch(API)
-        .then((response) => response.json())
-        .then((data) => dispatch(setComedies(data.results)));
-    }
+      if (nameCategory === "Family") {
+        page = 3;
+      }
+
+      const data = await fetchMoviesByGenre(id, page, sort);
+      const transformedData: MovieData[] = transformMovieData(data);
+
+      if (nameCategory === "Action") {
+        dispatch(setAction(transformedData));
+      }
+      if (nameCategory === "Adventure") {
+        setAdventure(transformedData);
+      }
+
+      if (nameCategory === "Family") {
+        setFamily(data.results);
+      }
+      if (nameCategory === "Fantasy") {
+        dispatch(setFantasy(transformedData));
+      }
+      if (nameCategory === "Comedy") {
+        dispatch(setComedies(transformedData));
+      }
+    } catch (error) {}
   };
 };
-
