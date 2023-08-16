@@ -7,7 +7,10 @@ import {
   setComedies,
   setCategories,
 } from "../slices/movieSlice";
-import { fetchMoviesByGenre, getMoviesCagories } from "../../services/movies.services";
+import {
+  fetchMoviesByGenre,
+  getMoviesCagories,
+} from "../../services/movies.services";
 import { transformMovieData } from "../../utils/movieUtils";
 import { MovieData } from "../../types/types";
 
@@ -35,11 +38,11 @@ export const getForIdCategory = (id: number, nameCategory: string) => {
         dispatch(setAction(transformedData));
       }
       if (nameCategory === "Adventure") {
-        setAdventure(transformedData);
+        dispatch(setAdventure(transformedData));
       }
 
       if (nameCategory === "Family") {
-        setFamily(data.results);
+        dispatch(setFamily(transformedData));
       }
       if (nameCategory === "Fantasy") {
         dispatch(setFantasy(transformedData));
