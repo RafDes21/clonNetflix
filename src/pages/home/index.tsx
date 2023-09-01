@@ -8,26 +8,26 @@ import useWindowWidth from "../../hooks/useWindowWidth";
 
 const Home = () => {
   const {
-    randomPoster,
+
     moviesChildren,
     moviesComedy,
     moviesPopular,
     moviesTeather,
     moviesTops,
-    isLoading
+ 
   } = useMoviesHome();
 
   const isMobile = useWindowWidth();
 
   return (
     <div className={styles.home}>
-      <ContentSection loading={isLoading}>
+      <ContentSection >
         <div className={styles.showIsNotMobile}>
-          <img
+          {/* <img
             className={styles.contentSectionImage}
             src={`https://image.tmdb.org/t/p/original${randomPoster}`}
             alt="Random Poster"
-          />
+          /> */}
         </div>
       </ContentSection>
       <ContentCard title={"Popular"} movies={moviesPopular} isMobile={isMobile} />

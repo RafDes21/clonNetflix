@@ -7,6 +7,7 @@ export const useSeries = () => {
   const dispatch = useAppDispatch();
 
   const seriesCategories = useAppSelector((state) => state.series.setCategories);
+  
   const seriesNew = useAppSelector((state) => state.series.news);
   const seriesComedies = useAppSelector((state) => state.series.comedies);
   const seriesFamily = useAppSelector((state) => state.series.family);

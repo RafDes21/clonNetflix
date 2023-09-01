@@ -18,7 +18,7 @@ const Series = () => {
 
   return (
     <div className={styles.home}>
-      <ContentSection loading={isLoading}>
+      <ContentSection >
         <div className={styles.showIsNotMobile}>
           <img
             className={styles.contentSectionImage}
