@@ -18,17 +18,20 @@ export const useMoviesHome = () => {
   const moviesComedy = useAppSelector((state) => state.movieHome.comedies);
   const moviesTops = useAppSelector((state) => state.movieHome.top);
 
-  // const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
 
-  // const [randomPoster, setRandomPoster] = useState("");
-
-  // useEffect(() => {
-  //   if (moviesPopular.length > 0) {
-  //     const poster = getRandomPoster(moviesPopular);
-  //     setRandomPoster(poster.image);
-  //     setIsLoading(false);
-  //   }
-  // }, [moviesPopular]);
+  const [randomPoster, setRandomPoster] = useState("");
+let contador = 0
+  useEffect(() => {
+    if (moviesPopular.length > 0) {
+      const poster = getRandomPoster(moviesPopular);
+      setRandomPoster(poster.image);
+      setIsLoading(false);
+      contador++
+    }
+    console.log(contador);
+    
+  }, [moviesPopular]);
 
   useEffect(() => {
     dispatch(fetchPopular());
@@ -43,6 +46,7 @@ export const useMoviesHome = () => {
     moviesPopular,
     moviesTeather,
     moviesTops,
-   
+   isLoading,
+   randomPoster
   };
 };
