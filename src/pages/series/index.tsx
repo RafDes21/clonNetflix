@@ -11,13 +11,14 @@ const Series = () => {
     seriesKids,
     seriesCrime,
     randomPoster,
+    isLoading
   } = useSeries();
 
   const isMobile = useWindowWidth();
 
   return (
     <div className={styles.home}>
-      <ContentSection>
+      <ContentSection loading={isLoading}>
         <div className={styles.showIsNotMobile}>
           <img
             className={styles.contentSectionImage}

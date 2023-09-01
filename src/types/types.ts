@@ -8,6 +8,12 @@ export type HeaderProps = {
 
 export interface ContentSectionProps {
   children: ReactNode;
+  
+}
+
+export interface ContentSectionLoadingProps {
+  children: ReactNode;
+  loading:boolean
 }
 
 export interface ContentMovieChildren {

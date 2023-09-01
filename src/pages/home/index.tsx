@@ -14,13 +14,14 @@ const Home = () => {
     moviesPopular,
     moviesTeather,
     moviesTops,
+    isLoading
   } = useMoviesHome();
 
   const isMobile = useWindowWidth();
 
   return (
     <div className={styles.home}>
-      <ContentSection>
+      <ContentSection loading={isLoading}>
         <div className={styles.showIsNotMobile}>
           <img
             className={styles.contentSectionImage}
