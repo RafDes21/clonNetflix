@@ -5,7 +5,7 @@ import styles from "./styles.module.css";
 import { useAppSelector } from "../../../../store/hook/hook";
 
 const ListCards: React.FC<ListCardsProps> = ({ movies, isMobile }) => {
-  const isLoading = useAppSelector((state) => state.movieHome.loading);
+
 
   const renderMovies = () => {
     return movies.map((movie, index) => (
