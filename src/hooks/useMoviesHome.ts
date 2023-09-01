@@ -21,16 +21,15 @@ export const useMoviesHome = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   const [randomPoster, setRandomPoster] = useState("");
-let contador = 0
+  let contador = 0;
   useEffect(() => {
     if (moviesPopular.length > 0) {
       const poster = getRandomPoster(moviesPopular);
       setRandomPoster(poster.image);
       setIsLoading(false);
-      contador++
+      contador++;
     }
     console.log(contador);
-    
   }, [moviesPopular]);
 
   useEffect(() => {
@@ -46,7 +45,7 @@ let contador = 0
     moviesPopular,
     moviesTeather,
     moviesTops,
-   isLoading,
-   randomPoster
+    isLoading,
+    randomPoster,
   };
 };

@@ -1,7 +1,4 @@
-import {
-  ContentCard,
-  ContentSection,
-} from "../../components";
+import { ContentCard, ContentSection } from "../../components";
 import styles from "./styles.module.css";
 import { useMoviesHome } from "../../hooks/useMoviesHome";
 import useWindowWidth from "../../hooks/useWindowWidth";
@@ -14,14 +11,13 @@ const Home = () => {
     moviesPopular,
     moviesTeather,
     moviesTops,
- 
   } = useMoviesHome();
 
   const isMobile = useWindowWidth();
 
   return (
     <div className={styles.home}>
-      <ContentSection >
+      <ContentSection>
         <div className={styles.showIsNotMobile}>
           <img
             className={styles.contentSectionImage}
@@ -30,18 +26,29 @@ const Home = () => {
           />
         </div>
       </ContentSection>
-      <ContentCard title={"Popular"} movies={moviesPopular} isMobile={isMobile} />
-      <ContentCard title={"Theater"} movies={moviesTeather} isMobile={isMobile} />
-      <ContentCard title={"Comedies"} movies={moviesComedy} isMobile={isMobile} />
+      <ContentCard
+        title={"Popular"}
+        movies={moviesPopular}
+        isMobile={isMobile}
+      />
+      <ContentCard
+        title={"Theater"}
+        movies={moviesTeather}
+        isMobile={isMobile}
+      />
+      <ContentCard
+        title={"Comedies"}
+        movies={moviesComedy}
+        isMobile={isMobile}
+      />
       <ContentCard title={"Top"} movies={moviesTops} isMobile={isMobile} />
-      <ContentCard title={"Children"} movies={moviesChildren} isMobile={isMobile} />
+      <ContentCard
+        title={"Children"}
+        movies={moviesChildren}
+        isMobile={isMobile}
+      />
     </div>
   );
 };
 
 export default Home;
-      
-   
-     
-      
-    
